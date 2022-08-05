@@ -1,0 +1,44 @@
+#wholebar {
+    background-color: grey;
+    display: grid;
+    height: 70px;
+}
+
+#siteName {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1;
+}
+
+li {
+    color: #A5A5AF
+}
+
+.list {
+    list-style-type: none;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    position: relative;
+}
+
+.items {
+    margin-right: 50px;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #A5A5AF;
+    cursor: pointer;
+    margin-top: -11px
+}
+
+.items:hover {
+    color: greenyellow;
+}
