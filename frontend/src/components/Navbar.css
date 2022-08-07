@@ -1,19 +1,21 @@
 #wholebar {
-    background-color: grey;
     display: grid;
-    height: 70px;
+    grid-template-columns: auto auto;
+    transition: 0.1s;
 }
 
 #siteName {
     position: relative;
     z-index: 1;
-    color: white;
+    color: #4A82AA;
 }
 
 nav {
     position: fixed;
     top: 0;
     width: 100vw;
+    height: 60px;
+    background-color: #F6F8FA;
     z-index: 1;
 }
 
@@ -21,9 +23,10 @@ li {
     color: #A5A5AF
 }
 
+
 .list {
     list-style-type: none;
-    background-color: white;
+    background-color: #F6F8FA;
     height: 100%;
     display: flex;
     justify-content: end;
@@ -32,13 +35,22 @@ li {
 
 .items {
     margin-right: 50px;
-    font-size: 15px;
+    font-size: 20px;
     text-transform: uppercase;
-    color: #A5A5AF;
+    color: #4A82AA;
     cursor: pointer;
-    margin-top: -11px
+    font-weight: 500;
 }
 
 .items:hover {
-    color: greenyellow;
+    color: black
 }
+
+#siteName {
+    height: auto;
+    padding-left: 3vw;
+    z-index: 2;
+    position:fixed;
+    color: #1d2d4b
+}
+
