@@ -20,4 +20,9 @@ class CitiesController < ApplicationController
             render json: city
         end
     end
+    
+    def show
+        clients = Client.find(params[:user_id])
+        render json: clients, include: :reservations
+    end
 end

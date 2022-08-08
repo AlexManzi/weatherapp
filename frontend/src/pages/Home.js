@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Home.css';
 import Citycard from '../components/Citycard.js';
-import { Link } from "react-router-dom"
 
 // function testApi() {
 //   fetch("https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=75ed5b185b55fa3e505d70d93a44599e")
@@ -902,6 +901,8 @@ function Home() {
       }]
 })
 
+
+
   // useEffect(() => {
   //   fetch("https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=hourly&appid=75ed5b185b55fa3e505d70d93a44599e")
   //     .then(resp => resp.json())
@@ -910,7 +911,6 @@ function Home() {
   // }, [])
 
   useEffect(() => {
-    let cityId = 0
     // console.log(cityOne.daily[0].dt)
     // console.log(cityOne.daily[1].dt)
     // console.log(cityOne.hourly[0].dt)
@@ -932,11 +932,8 @@ function Home() {
         cityName: "New York"
       })
     })
-    .then(resp => resp.json)
-    .then(city => cityId = city.id)
     for (let i=0; i < 24; i++) {
       let hour = cityOne.hourly[i]
-      console.log(hour)
       fetch("http://localhost:3000/hours", {
       method: "POST",
       headers: {
@@ -954,7 +951,6 @@ function Home() {
     }
     for (let i=0; i < 5; i++) {
       let day = cityOne.daily[i]
-      console.log(day)
       fetch("http://localhost:3000/days", {
       method: "POST",
       headers: {
@@ -973,7 +969,16 @@ function Home() {
     }
   })
 
-  console.log(cityOne)
+  
+
+  let cities = ["San Francisco", "Sydney", "Tokyo", "Rome"]
+  let shownArray = cities.map(city => (
+    <Citycard
+    key={city.id}
+    cityName={city}
+    />
+  ))
+
 
   return (
     <div id="hpagemain">
@@ -997,6 +1002,7 @@ function Home() {
         <h1>Featured Locations</h1>
       </div>
       <div id="displaycardarea">
+        {shownArray}
       </div>
     </div>
     <div id="footer">
