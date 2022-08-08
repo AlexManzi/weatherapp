@@ -38,7 +38,7 @@ li {
     padding-top: 8px;
     font-size: 20px;
     text-transform: uppercase;
-    color: #4A82AA;
+    color: #134e89;
     cursor: pointer;
     font-weight: 500;
 }
@@ -52,6 +52,6 @@ li {
     padding-left: 3vw;
     z-index: 2;
     position:fixed;
-    color: #1d2d4b
+    color: #134e89;
 }
 

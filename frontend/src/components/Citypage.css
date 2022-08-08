@@ -1,3 +1,41 @@
-#anything {
-    padding-top: 20vh;
+#citypage {
+    padding-top: 10vh;
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+
+#currentCityInfo {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    text-align: start;
+    padding-left: 5vw;
+}
+
+#cityWeather {
+    margin-left: auto;
+    padding-right: 20vw;
+    text-align: start;
+}
+
+#weatherline {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    column-gap: 3vw;
+}
+
+#fiveday {
+    background-color: grey;
+    height: 300px;
+    width: 1000px;
+    margin-left: 2vw;
+}
+
+#rightwrapper {
+    background-color: aquamarine;
+    height: 500px;
+    width: 400px;
+    margin-top: 49px;
+    margin-right: 10vw;
 }

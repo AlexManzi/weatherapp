@@ -23,6 +23,6 @@ class CitiesController < ApplicationController
     
     def show
         city = City.find_by!(params[:cityName])
-        render json: city, includes: :hours
+        render json: city
     end
 end

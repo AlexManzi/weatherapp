@@ -2,14 +2,6 @@ import React, { useState, useEffect } from 'react'
 import './Home.css';
 import Citycard from '../components/Citycard.js';
 
-// function testApi() {
-//   fetch("https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=75ed5b185b55fa3e505d70d93a44599e")
-//   .then(resp => resp.json())
-//   .then((data) => console.log(data));
-// }
-
-// testApi(
-
 function Home() {
   let [cityOne, setCityOne] = useState({
     "lat": 39.31,
@@ -900,21 +892,22 @@ function Home() {
         "uvi": 3.38
       }]
 })
+  let [currentWeather, setCurrentWeather] = useState([])
 
+useEffect(() => {
+  fetch(`http://localhost:3000/cities/NY`)
+  .then(resp => resp.json())
+  .then(data => setCurrentWeather(data))
+}, [])
 
+  let cityName = (currentWeather ? currentWeather.cityName : "")
+  let currentTemp = (currentWeather ? currentWeather.currentTemp : "")
+  let currentVibes = (currentWeather ? currentWeather.feelsLike : "")
+  let currentIcon = (currentWeather ? currentWeather.icon : "")
 
-  // useEffect(() => {
-  //   fetch("https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=hourly&appid=75ed5b185b55fa3e505d70d93a44599e")
-  //     .then(resp => resp.json())
-  //     .then((data) => setCityOne(data))
-
-  // }, [])
+// console.log(currentIcon)
 
   useEffect(() => {
-    // console.log(cityOne.daily[0].dt)
-    // console.log(cityOne.daily[1].dt)
-    // console.log(cityOne.hourly[0].dt)
-    // console.log(cityOne.hourly[23].dt)
     fetch("http://localhost:3000/cities", {
       method: "POST",
       headers: {
@@ -971,7 +964,7 @@ function Home() {
 
   
 
-  let cities = ["NY", "SF", "Sydney", "Tokyo", "Rome"]
+  let cities = ["NY", "SF", "SYD", "TK", "RM"]
   let shownArray = cities.map(city => (
     <Citycard
     key={city.id}
@@ -979,6 +972,21 @@ function Home() {
     />
   ))
 
+  if (cityName === "NY") {
+    cityName = "New York City"
+  }
+  else if (cityName === "SF") {
+    cityName = "San Francisco"
+  }
+  else if (cityName === "SYD") {
+    cityName = "Sydney"
+  }
+  else if (cityName === "TK") {
+    cityName = "Tokyo"
+  }
+  else if (cityName === "RM") {
+    cityName = "RM"
+  }
 
   return (
     <div id="hpagemain">
@@ -988,10 +996,11 @@ function Home() {
       </div>
       <div id="rightside">
         <div id="maincitytop">
-          <h2>City Here</h2>
-          <h2>Temp Here</h2>
-          <h2>Pic here</h2>
-          <h3>Feels Like</h3>
+          <h2>{cityName}</h2>
+          <h2>{currentTemp}°</h2>
+          <img id="weatherpic" src={`http://openweathermap.org/img/wn/${currentIcon}.png`}/>
+          <h2></h2>
+          <h3 id="feelslike">It feels like {currentVibes}°</h3>
         </div>
         <div id="maincityinfo">
         </div>
