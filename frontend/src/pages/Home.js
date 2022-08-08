@@ -97,7 +97,7 @@ function Home() {
   // }, [])
 
   useEffect(() => {
-    fetch("/city"), {
+    fetch("http://localhost:3000/cities", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -109,11 +109,11 @@ function Home() {
         uvi: cityOne.current.uvi,
         sunrise: cityOne.current.sunrise,
         sunset: cityOne.current.sunset,
-        icon: cityOne.weather.icon,
+        icon: cityOne.current.weather[0].icon,
         humidity: cityOne.current.humidity,
         cityName: "New York"
       })
-    }
+    })
   })
 
   console.log(cityOne)
