@@ -20,4 +20,10 @@ class HoursController < ApplicationController
             render json: hour
         end
     end
+
+    def showByCityName
+        hours = Hour.where(:cityName => params[:cityName])
+        render json: hours
+    end
+
 end

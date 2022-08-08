@@ -929,7 +929,7 @@ function Home() {
         sunset: cityOne.current.sunset,
         icon: cityOne.current.weather[0].icon,
         humidity: cityOne.current.humidity,
-        cityName: "New York"
+        cityName: "NY"
       })
     })
     for (let i=0; i < 24; i++) {
@@ -944,7 +944,7 @@ function Home() {
         temp: hour.temp,
         icon: hour.weather[0].icon,
         hourNumber: i,
-        cityName: "New York",
+        cityName: "NY",
         city_id: 1
       })
     })
@@ -962,7 +962,7 @@ function Home() {
         tempL: day.temp.min,
         icon: day.weather[0].icon,
         dayNumber: i,
-        cityName: "New York",
+        cityName: "NY",
         city_id: 1
       })
     })
@@ -971,7 +971,7 @@ function Home() {
 
   
 
-  let cities = ["San Francisco", "Sydney", "Tokyo", "Rome"]
+  let cities = ["NY", "SF", "Sydney", "Tokyo", "Rome"]
   let shownArray = cities.map(city => (
     <Citycard
     key={city.id}

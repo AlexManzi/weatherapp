@@ -20,4 +20,9 @@ class DaysController < ApplicationController
             render json: day
         end
     end
+
+    def showByCityName
+        days = Day.where(:cityName => params[:cityName])
+        render json: days
+    end
 end
