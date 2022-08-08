@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hourly_time: 1
+  temperature: 9.99
+  icon: MyString
+  hour_number: 1
+
+two:
+  hourly_time: 1
+  temperature: 9.99
+  icon: MyString
+  hour_number: 1

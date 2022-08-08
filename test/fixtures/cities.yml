@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  current_temp: 9.99
+  feels_like: 9.99
+  humidity: 1
+  uvi: 9.99
+  sunrise: 1
+  sunset: 1
+  time: 1
+  icon: MyString
+  city_name: MyString
+  hours: one
+  days: one
+
+two:
+  current_temp: 9.99
+  feels_like: 9.99
+  humidity: 1
+  uvi: 9.99
+  sunrise: 1
+  sunset: 1
+  time: 1
+  icon: MyString
+  city_name: MyString
+  hours: two
+  days: two
