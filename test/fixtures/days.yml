@@ -4,10 +4,12 @@ one:
   tempH: 9.99
   tempL: 9.99
   icon: MyString
-  day_number: 1
+  dayNumber: 1
+  city: one
 
 two:
   tempH: 9.99
   tempL: 9.99
   icon: MyString
-  day_number: 1
+  dayNumber: 1
+  city: two

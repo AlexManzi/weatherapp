@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  hourly_time: 1
-  temperature: 9.99
+  hourlyTime: 1
+  temp: 9.99
   icon: MyString
-  hour_number: 1
+  hourNumber: 1
+  city: one
 
 two:
-  hourly_time: 1
-  temperature: 9.99
+  hourlyTime: 1
+  temp: 9.99
   icon: MyString
-  hour_number: 1
+  hourNumber: 1
+  city: two

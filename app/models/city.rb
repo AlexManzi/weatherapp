@@ -1,4 +1,4 @@
 class City < ApplicationRecord
-  belongs_to :hours
-  belongs_to :days
+  has_many :days
+  has_many :hours
 end

@@ -4,7 +4,8 @@ class CreateDays < ActiveRecord::Migration[7.0]
       t.decimal :tempH
       t.decimal :tempL
       t.string :icon
-      t.integer :day_number
+      t.integer :dayNumber
+      t.references :city, null: false, foreign_key: true
 
       t.timestamps
     end
