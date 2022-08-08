@@ -9,6 +9,7 @@ class CreateCities < ActiveRecord::Migration[7.0]
       t.integer :sunset
       t.string :icon
       t.integer :humidity
+      t.string :cityName
 
       t.timestamps
     end

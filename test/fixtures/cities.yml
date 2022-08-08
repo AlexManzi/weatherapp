@@ -9,6 +9,7 @@ one:
   sunset: 1
   icon: MyString
   humidity: 1
+  cityName: MyString
 
 two:
   currentTemp: 9.99
@@ -19,3 +20,4 @@ two:
   sunset: 1
   icon: MyString
   humidity: 1
+  cityName: MyString
