@@ -12,37 +12,111 @@ import { Link } from "react-router-dom"
 // testApi(
 
 function Home() {
-  let apikey = "75ed5b185b55fa3e505d70d93a44599e";
-  let cityCards = []
-  let latLongs = {
-    "San Francisco": [123, 456],
-    "Sydney" : [123, 123],
-    "Toronto" : [123, 123],
-    "Rome": [123, 123]
-  }
-
-  function createCityCard(city) {
-    let lat = latLongs[city][0]
-    let long = latLongs[city][1]
-    let apiCall = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&exclude=hourly&appid=${apikey}`
-    fetch(apiCall)
-    .then(resp => resp.json())
-    .then(
-    cityCards.push(<Citycard
-      key={city}
-      />))
-  }
-
-  Object.keys(latLongs).forEach((city) => createCityCard(city))
-
+  let [cityOne, setCityOne] = useState({
+    "lat": 39.31,
+    "lon": -74.5,
+    "timezone": "America/New_York",
+    "timezone_offset": -18000,
+    "current": {
+      "dt": 1646318698,
+      "sunrise": 1646306882,
+      "sunset": 1646347929,
+      "temp": 282.21,
+      "feels_like": 278.41,
+      "pressure": 1014,
+      "humidity": 65,
+      "dew_point": 275.99,
+      "uvi": 2.55,
+      "clouds": 40,
+      "visibility": 10000,
+      "wind_speed": 8.75,
+      "wind_deg": 360,
+      "wind_gust": 13.89,
+      "weather": [
+        {
+          "id": 802,
+          "main": "Clouds",
+          "description": "scattered clouds",
+          "icon": "03d"
+        }
+      ]
+    },
+    "hourly": [
+        {
+          "dt": 1646316000,
+          "temp": 281.94,
+          "feels_like": 278.49,
+          "pressure": 1014,
+          "humidity": 67,
+          "dew_point": 276.16,
+          "uvi": 1.49,
+          "clouds": 52,
+          "visibility": 10000,
+          "wind_speed": 7.16,
+          "wind_deg": 313,
+          "wind_gust": 10.71,
+          "weather": [
+            {
+              "id": 803,
+              "main": "Clouds",
+              "description": "broken clouds",
+              "icon": "04d"
+            }
+          ],
+          "pop": 0.03
+        },
+        {
+            "dt": 1646316000,
+            "temp": 281.94,
+            "feels_like": 278.49,
+            "pressure": 1014,
+            "humidity": 67,
+            "dew_point": 276.16,
+            "uvi": 1.49,
+            "clouds": 52,
+            "visibility": 10000,
+            "wind_speed": 7.16,
+            "wind_deg": 313,
+            "wind_gust": 10.71,
+            "weather": [
+              {
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04d"
+              }
+            ]
+            }]
+})
 
   // useEffect(() => {
   //   fetch("https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=hourly&appid=75ed5b185b55fa3e505d70d93a44599e")
   //     .then(resp => resp.json())
-  //     .then((data) => console.log(data));
-
+  //     .then((data) => setCityOne(data))
 
   // }, [])
+
+  useEffect(() => {
+    fetch("/city"), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        currentTemp: cityOne.current.temp,
+        time: cityOne.current.dt,
+        feelsLike: cityOne.current.feels_like,
+        uvi: cityOne.current.uvi,
+        sunrise: cityOne.current.sunrise,
+        sunset: cityOne.current.sunset,
+        icon: cityOne.weather.icon,
+        humidity: cityOne.current.humidity,
+        cityName: "New York"
+      })
+    }
+  })
+
+  console.log(cityOne)
 
   return (
     <div id="hpagemain">
@@ -66,7 +140,6 @@ function Home() {
         <h1>Featured Locations</h1>
       </div>
       <div id="displaycardarea">
-        {cityCards}
       </div>
     </div>
     <div id="footer">
