@@ -1004,17 +1004,7 @@ useEffect(() => {
 
   
 
-
-  let cities = ["NY", "SF", "SYD", "TK", "RM"]
-  useEffect(() => {
-    cities.forEach(city => {
-      populateTablesWithCity(city, cities.indexOf(city)+1)
-      if (city === "NY") {
-        setDisplayName("New York") 
-      }
-      })
-    })
-  let shownArray = cities.map(city => (
+  let shownArray = Object.keys(citiesWithLatLongs).map(city => (
     <Citycard
     key={city.id}
     cityName={city}
@@ -1043,7 +1033,7 @@ useEffect(() => {
       </div>
       <div id="rightside">
         <div id="maincitytop">
-          <h1 id="placeName">{displayName}</h1>
+          <h1 id="placeName">New York</h1>
           <h2>{currentTemp}°</h2>
           <img id="weatherpic" src={`http://openweathermap.org/img/wn/${currentIcon}.png`}/>
           <h2></h2>
