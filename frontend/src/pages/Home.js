@@ -927,7 +927,7 @@ useEffect(() => {
 
   fetch("/api/showCityByCityName?cityName=NY")
   .then(resp => resp.json())
-  .then(data => { console.log(data)
+  .then(data => { console.log(data) 
     setCurrentWeather(data)})
 
   fetch("/api/showHoursByCityName?cityName=NY")
