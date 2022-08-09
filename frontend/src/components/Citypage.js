@@ -74,17 +74,15 @@ useEffect(() => {
     .then(resp => resp.json())
     .then(data => {
       console.log(data)
-      setCurrentWeatherInfo([data])})
+      setCurrentWeatherInfo(data)})
   }, [cityName])
 
-  let currentInfo = currentWeatherInfo.map(weather => 
-    (
-    <Currentweather
+  let currentInfo = 
+   (<Currentweather
     key={currentWeatherInfo.id}
     weather={currentWeatherInfo}
     cName={cName}
-    />
-  ))
+    />)
 
   let hourlyInfo = hourlyWeatherInfo.map(hour => (
     <Hourlycard

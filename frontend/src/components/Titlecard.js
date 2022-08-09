@@ -13,8 +13,6 @@ function Titlecard({weather}) {
     let currentIcon = (weather ? weather.icon : "")
     let currentVibes = (weather ? temperatureConverter(weather.feelsLike) : "")
 
-    console.log(weather)
-
   return (
     <div id="topdiv">
         <h1 id="placeName">New York</h1>
