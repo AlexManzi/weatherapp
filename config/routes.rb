@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+namespace :api do
   resources :days
   resources :hours
   resources :cities
@@ -10,5 +11,8 @@ Rails.application.routes.draw do
   get "/showDaysByCityName", to:"days#showByCityName"
   get "/showHoursByCityName", to:"hours#showByCityName"
   get "/showCityByCityName", to:"cities#showByCityName"
+end
+
+get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
 end

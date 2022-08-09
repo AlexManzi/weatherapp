@@ -34,7 +34,7 @@ function compare_days( a, b )
 }
 
   useEffect(() => {
-    fetch(`http://localhost:3000/showHoursByCityName?cityName=${cityName}`)
+    fetch(`/api/showHoursByCityName?cityName=${cityName}`)
     .then(resp => resp.json())
     .then(data => {
       data.sort(compare_hours);
@@ -42,16 +42,15 @@ function compare_days( a, b )
   }, [])
 
   useEffect(() => {
-    fetch(`http://localhost:3000/showDaysByCityName?cityName=${cityName}`)
+    fetch(`/api/showDaysByCityName?cityName=${cityName}`)
     .then(resp => resp.json())
     .then(data => {
       data.sort(compare_days);
-      console.log(data)
       setDailyWeatherInfo(data)})
   }, [])
 
   useEffect(() => {
-    fetch(`http://localhost:3000/cities/${cityName}`)
+    fetch(`/api/cities/${cityName}`)
     .then(resp => resp.json())
     .then(data => setCurrentWeatherInfo(data))
   }, [])

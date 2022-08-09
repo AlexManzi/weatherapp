@@ -7,7 +7,7 @@ function Citycard({cityName}) {
   let [displayedCard, setDisplayedCard] = useState({})
 
     useEffect(() => {
-      fetch(`http://localhost:3000/showCityByCityName?cityName=${cityName}`)
+      fetch(`/api/showCityByCityName?cityName=${cityName}`)
       .then(resp => resp.json())
       .then(data => {console.log(data[0]);setDisplayedCard(data[0])}) 
   }, [])

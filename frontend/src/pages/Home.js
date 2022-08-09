@@ -897,7 +897,7 @@ function Home() {
   let [nyHourly, setNyHourly] = useState([])
 
 useEffect(() => {
-  fetch(`http://localhost:3000/cities/NY`)
+  fetch(`/api/cities/NY`)
   .then(resp => resp.json())
   .then(data => setCurrentWeather(data))
 }, [])
@@ -914,7 +914,7 @@ function compare_hours( a, b )
 }
 
 useEffect(() => {
-  fetch(`http://localhost:3000/showHoursByCityName?cityName=NY`)
+  fetch(`/api/showHoursByCityName?cityName=NY`)
   .then(resp => resp.json())
   .then(data => {
     data.sort(compare_hours);
@@ -927,7 +927,7 @@ useEffect(() => {
   let currentIcon = (currentWeather ? currentWeather.icon : "")
   function populateTablesWithCity(cityName, cityId) {
 
-    fetch("http://localhost:3000/cities", {
+    fetch("/api/cities", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -946,7 +946,7 @@ useEffect(() => {
     })
     for (let i=0; i < 24; i++) {
       let hour = cityOne.hourly[i]
-      fetch("http://localhost:3000/hours", {
+      fetch("/api/hours", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -963,7 +963,7 @@ useEffect(() => {
     }
     for (let i=0; i < 5; i++) {
       let day = cityOne.daily[i]
-      fetch("http://localhost:3000/days", {
+      fetch("/api/days", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

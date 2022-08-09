@@ -1,4 +1,4 @@
-class HoursController < ApplicationController
+class Api::HoursController < ApplicationController
     def index 
         hours = Hour.all 
         render json: hours
