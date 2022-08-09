@@ -1007,7 +1007,9 @@ useEffect(() => {
     }
   }
 
-  let mainWeather = nyWeather.map(weather => (
+  let testArr = [1]
+
+  let mainWeather = testArr.map(weather => (
     <Titlecard
       key={weather.id}
       weather={weather}

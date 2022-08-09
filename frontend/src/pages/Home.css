@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: auto;
     height: 200vh;
-    background-color: #f7c59f
+    background-color: #F6F8FA;
 }
 
 #hpage {
@@ -46,27 +46,29 @@
     padding: 0.5rem 1rem;
     color: #112334;
     border-bottom: 2px solid #112334;
-    width: 50%;
+    width: 47%;
 }
 
 
 #maincitytop {
-    background-color: #f7c59f;
+    background: rgba(199, 217, 229, 0.6);
     width: 25vw;
     height: 12vh;
     margin-left: auto;
     border-radius: 5px;
-    border: 5px solid #f7c59f;
+    padding: 1vh;
+    box-shadow: 5px 5px 5px 1px #A9C7D7;
 }
 
 #maincityinfo {
     margin-top: 3vh;
-    background-color: #f7c59f;
+    background: rgba(199, 217, 229, 0.35);
     width: 18vw;
     height: 50vh;
     margin-left: auto;
     overflow-y: auto;
     padding: 1vh;
+    box-shadow: 5px 5px 5px 1px #A9C7D7;
 }
 
 #destinationdisplay {

@@ -1,8 +1,9 @@
 #wholecard {
-    background-color: #d9d9d9;
+    background: rgba(239, 130, 101, 0.4);
     height: 20vw;
     width: 15vw;
     border-radius: 5px;
+    box-shadow: 5px 5px 5px 1px #A9C7D7;
 }
 
 #hidden {

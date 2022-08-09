@@ -77,12 +77,15 @@ useEffect(() => {
       setCurrentWeatherInfo(data)})
   }, [cityName])
 
-  let currentInfo = currentWeatherInfo.map(weather => (<Currentweather
+  let testArr = ["1"]
+
+  let currentInfo = testArr.map(weather => (<Currentweather
     key={weather.id}
     weather={weather}
     cName={cName}
     />))
     
+   
 
   let hourlyInfo = hourlyWeatherInfo.map(hour => (
     <Hourlycard
