@@ -6,6 +6,7 @@ function Citycard({cityName}) {
   let [cards, setCards] = useState()
   let [displayedCard, setDisplayedCard] = useState({})
   let [cName, setCName] = useState('')
+  let [weatherInfo, setWeatherInfo] = useState('')
 
     useEffect(() => {
       fetch(`/api/showCityByCityName?cityName=${cityName}`)
@@ -14,17 +15,16 @@ function Citycard({cityName}) {
   }, [])
 
   useEffect(() => {
-    window.localStorage.setItem('cardInfo', JSON.stringify(displayedCard))
-  }, [displayedCard])
-
-  useEffect(() => {
     const data = window.localStorage.getItem('cardInfo')
-    setDisplayedCard(JSON.parse(data))
+    setWeatherInfo(JSON.parse(data))
   }, [])
 
+  useEffect(() => {
+    window.localStorage.setItem('cardInfo', JSON.stringify(weatherInfo))
+  }, [weatherInfo])
 
   function clickInfo(e) {
-    setDisplayedCard(e); 
+    setWeatherInfo(e); 
   }
 
   function temperatureConverter(valNum) {
