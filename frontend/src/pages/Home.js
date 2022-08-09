@@ -1009,7 +1009,7 @@ useEffect(() => {
   let testArr = ["1"]
 
 
-  let mainWeather = nyWeather.map(weather => (
+  let mainWeather = nyHourly.map(weather => (
     <Titlecard
       key={weather.id}
       weather={weather}

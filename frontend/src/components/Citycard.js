@@ -1,5 +1,3 @@
-
-
 import React, {useState, useEffect} from 'react'
 import './Citycard.css';
 import { Link } from "react-router-dom"
@@ -23,6 +21,11 @@ function Citycard({cityName}) {
     const data = window.localStorage.getItem('cardInfo')
     setDisplayedCard(JSON.parse(data))
   }, [])
+
+
+  function clickInfo(e) {
+    setDisplayedCard(e); 
+  }
 
   function temperatureConverter(valNum) {
     valNum = parseFloat(valNum);
@@ -55,7 +58,7 @@ function Citycard({cityName}) {
   }, [])
 
   return (
-    <Link to={{pathname: "/citypage"}} state={{ cityname: cityName }} style={{ textDecoration: 'none'}} id="cardText">
+    <Link to={{pathname: "/citypage"}} onClick={clickInfo} state={{ cityname: cityName }} style={{ textDecoration: 'none'}} id="cardText">
     <div id="wholecard">
         <h1 id="hidden">{cityName}</h1>
         <h1 id="cardTitle">{cName}</h1>
