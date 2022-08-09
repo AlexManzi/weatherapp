@@ -1,0 +1,11 @@
+#dailycard {
+    border-right: 1px solid;
+    border-left: 1px solid;
+}
+
+#tworow {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-evenly;
+    column-gap: 2vw;
+}

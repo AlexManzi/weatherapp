@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Home.css';
 import Citycard from '../components/Citycard.js';
+import Hourlycard from '../components/Hourlycard';
 
 function Home() {
   let [cityOne, setCityOne] = useState({
@@ -893,6 +894,7 @@ function Home() {
       }]
 })
   let [currentWeather, setCurrentWeather] = useState([])
+  let [nyHourly, setNyHourly] = useState([])
 
 useEffect(() => {
   fetch(`http://localhost:3000/cities/NY`)
@@ -900,12 +902,29 @@ useEffect(() => {
   .then(data => setCurrentWeather(data))
 }, [])
 
+function compare_hours( a, b )
+  {
+  if ( a.hourNumber < b.hourNumber){
+    return -1;
+  }
+  if ( a.hourNumber > b.hourNumber){
+    return 1;
+  }
+  return 0;
+}
+
+useEffect(() => {
+  fetch(`http://localhost:3000/showHoursByCityName?cityName=NY`)
+  .then(resp => resp.json())
+  .then(data => {
+    data.sort(compare_hours);
+    setNyHourly(data)})
+}, [])
+
   let cityName = (currentWeather ? currentWeather.cityName : "")
   let currentTemp = (currentWeather ? currentWeather.currentTemp : "")
   let currentVibes = (currentWeather ? currentWeather.feelsLike : "")
   let currentIcon = (currentWeather ? currentWeather.icon : "")
-
-// console.log(currentIcon)
 
   useEffect(() => {
     fetch("http://localhost:3000/cities", {
@@ -962,7 +981,7 @@ useEffect(() => {
     }
   })
 
-  
+  console.log(currentWeather)
 
   let cities = ["NY", "SF", "SYD", "TK", "RM"]
   let shownArray = cities.map(city => (
@@ -970,6 +989,13 @@ useEffect(() => {
     key={city.id}
     cityName={city}
     />
+  ))
+
+  let currentHourly = nyHourly.map(hour => (
+    <Hourlycard
+      key={hour.id}
+      hour={hour}
+      />
   ))
 
   return (
@@ -987,6 +1013,8 @@ useEffect(() => {
           <h3 id="feelslike">It feels like {currentVibes}°</h3>
         </div>
         <div id="maincityinfo">
+          <h2>Hourly Forecast</h2>
+          {currentHourly}
         </div>
       </div>
     </div>

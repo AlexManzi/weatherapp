@@ -11,11 +11,23 @@ function Citypage() {
   let [hourlyWeatherInfo, setHourlyWeatherInfo] = useState([])
   let [dailyWeatherInfo, setDailyWeatherInfo] = useState([])
 
+  function compare_hours( a, b )
+  {
+  if ( a.hourNumber < b.hourNumber){
+    return -1;
+  }
+  if ( a.hourNumber > b.hourNumber){
+    return 1;
+  }
+  return 0;
+}
+
   useEffect(() => {
-    console.log(cityName)
     fetch(`http://localhost:3000/showHoursByCityName?cityName=${cityName}`)
     .then(resp => resp.json())
-    .then(data => setHourlyWeatherInfo(data))
+    .then(data => {
+      data.sort(compare_hours);
+      setHourlyWeatherInfo(data)})
   }, [])
 
   useEffect(() => {
@@ -48,7 +60,17 @@ function Citypage() {
     window.localStorage.setItem('dailyInfo', JSON.stringify(dailyWeatherInfo))
   }, [dailyWeatherInfo])
 
-
+function getHourFromUnixTimestamp(timestamp) {
+  let hours = new Date(timestamp * 1000).getHours()
+  if( hours > 12) {
+    hours = hours - 12
+    return `${hours} pm`
+  } else if (hours === 12) {
+    return "12 pm"
+  }
+  return `${hours} am`
+  
+}
 
   let hourlyInfo = hourlyWeatherInfo.map(hour => (
     <Hourlycard
@@ -60,21 +82,21 @@ function Citypage() {
   let dailyInfo = dailyWeatherInfo.map(day => (
     <Dailycard
       key={day.id}
-      hour={day}
+      day={day}
       />
   ))
 
   let cityTemp = (currentWeatherInfo ? currentWeatherInfo.currentTemp : "")
-  let cityTime = (currentWeatherInfo ? currentWeatherInfo.time : "")
+  let cityTime = (currentWeatherInfo ? getHourFromUnixTimestamp(currentWeatherInfo.time) : "")
   let cityVibes = (currentWeatherInfo ? currentWeatherInfo.feelsLike : "")
   let cityHumidity = (currentWeatherInfo ? currentWeatherInfo.humidity : "")
   let cityUvi = (currentWeatherInfo ? currentWeatherInfo.uvi : "")
   let cityIcon = (currentWeatherInfo ? currentWeatherInfo.icon : "")
-  let citySunrise = (currentWeatherInfo ? currentWeatherInfo.sunrise : "")
-  let citySunset = (currentWeatherInfo ? currentWeatherInfo.sunset : "")
+  let citySunrise = (currentWeatherInfo ? getHourFromUnixTimestamp(currentWeatherInfo.sunrise) : "")
+  let citySunset = (currentWeatherInfo ? getHourFromUnixTimestamp(currentWeatherInfo.sunset) : "")
 
   // console.log(dailyWeatherInfo)
-  console.log(hourlyWeatherInfo)
+  // console.log(hourlyWeatherInfo)
   // console.log(currentWeatherInfo)
   
   return (

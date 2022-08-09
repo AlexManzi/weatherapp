@@ -43,7 +43,7 @@
 }
 
 #feelslike {
-    margin-top: -4vh;
+    margin-top: -2vh;
     font-size: .9rem;
 }
 
@@ -67,6 +67,7 @@
     width: 18vw;
     height: 50vh;
     margin-left: auto;
+    overflow-y: auto;
 }
 
 #destinationdisplay {
