@@ -1,7 +1,7 @@
 #hpagemain {
     display: grid;
     grid-template-columns: auto;
-    height: 120vw;
+    height: 200vh;
     background-color: #f7c59f
 }
 
@@ -72,7 +72,7 @@
 }
 
 #destinationdisplay {
-    margin-top: -36vh;
+    margin-top: -10vh;
 }
 
 #destinationtitle {
