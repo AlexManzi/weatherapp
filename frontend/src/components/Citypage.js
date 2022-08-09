@@ -85,14 +85,6 @@ useEffect(() => {
 
 function getHourFromUnixTimestamp(timestamp, cityName) {
   let hours = new Date(timestamp * 1000).getHours()
-  if( hours > 12 && hours < 24) {
-    hours = hours - 12
-    return `${hours} pm`
-  } else if (hours === 12) {
-    return "12 pm"
-  } else if (hours === 24) {
-    return "12 am"
-  }
   if (cityName === "SF") {
     hours = hours - 3
   }
@@ -104,6 +96,14 @@ function getHourFromUnixTimestamp(timestamp, cityName) {
   }
   else if (cityName === "SYD") {
     hours = hours + 14
+  }
+  if( hours > 12 && hours < 24) {
+    hours = hours - 12
+    return `${hours} pm`
+  } else if (hours === 12) {
+    return "12 pm"
+  } else if (hours === 24) {
+    return "12 am"
   }
   return `${hours} am`
 }
@@ -160,7 +160,7 @@ console.log(cityName)
           <img id="iconpic" src={`http://openweathermap.org/img/wn/${cityIcon}.png`}/>
         </div>
         <div id="swingRight">
-        <h3>The current time is {cityTime}</h3>
+        <h3>The local time is {cityTime}</h3>
         <h3>It feels like {cityVibes}°</h3>
         <h3>{cityHumidity}% Humidity</h3>
         <h3>{cityUvi} UV Index</h3>
