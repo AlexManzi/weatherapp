@@ -38,13 +38,13 @@ function Currentweather({weather, cName}) {
         </div>
         <div id="cityWeather">
             <div id="weatherline">
-            <h2>{cityTemp}°</h2>
-            <img id="iconpic" src={`http://openweathermap.org/img/wn/${cityIcon}.png`}/>
+                <h2>{cityTemp}°</h2>
+                <img id="iconpic" src={`http://openweathermap.org/img/wn/${cityIcon}.png`}/>
             </div>
             <div id="swingRight">
-            <h3>Feels like {cityVibes}°</h3>
-            <h3>{cityHumidity}% Humidity</h3>
-            <h3>{cityUvi} UV Index</h3>
+                <h3>Feels like {cityVibes}°</h3>
+                <h3>{cityHumidity}% Humidity</h3>
+                <h3>{cityUvi} UV Index</h3>
             </div>
         </div>
         </div>
