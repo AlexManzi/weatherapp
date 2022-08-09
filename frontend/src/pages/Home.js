@@ -1006,10 +1006,8 @@ useEffect(() => {
     })
     }
   }
-
-  let testArr = [1]
-
-  let mainWeather = testArr.map(weather => (
+  
+  let mainWeather = nyWeather.map(weather => (
     <Titlecard
       key={weather.id}
       weather={weather}
