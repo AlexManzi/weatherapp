@@ -1,3 +1,5 @@
+
+
 import React, {useState, useEffect} from 'react'
 import './Citycard.css';
 import { Link } from "react-router-dom"
@@ -10,13 +12,12 @@ function Citycard({cityName}) {
     useEffect(() => {
       fetch(`/api/showCityByCityName?cityName=${cityName}`)
       .then(resp => resp.json())
-      .then(data => {
-        console.log(data[0]);
-        window.localStorage.setItem('cardInfo', JSON.stringify(data[0]))
-        }) 
+      .then(data => {console.log(data[0]);setDisplayedCard(data[0])}) 
   }, [])
 
-
+  useEffect(() => {
+    window.localStorage.setItem('cardInfo', JSON.stringify(displayedCard))
+  }, [displayedCard])
 
   useEffect(() => {
     const data = window.localStorage.getItem('cardInfo')
@@ -36,8 +37,6 @@ function Citycard({cityName}) {
   let currentDesc = (displayedCard  ? displayedCard.weatherdesc : "")
 
   useEffect(() => {
-    
-
     if (cityName === "NY") {
       setCName("New York") 
     }

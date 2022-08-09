@@ -933,7 +933,7 @@ useEffect(() => {
   }
   
 
-  fetch("/api/cities/NY")
+  fetch("/api/showCityByCityName?cityName=NY")
   .then(resp => resp.json())
   .then(data => { 
     console.log(data) 
