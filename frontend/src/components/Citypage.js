@@ -60,7 +60,7 @@ useEffect(() => {
     .then(data => {
       data.sort(compare_hours);
       setHourlyWeatherInfo(data)})
-  }, [])
+  }, [cityName])
 
   useEffect(() => {
     fetch(`/api/showDaysByCityName?cityName=${cityName}`)
@@ -68,13 +68,13 @@ useEffect(() => {
     .then(data => {
       data.sort(compare_days);
       setDailyWeatherInfo(data)})
-  }, [])
+  }, [cityName])
 
   useEffect(() => {
     fetch(`/api/cities/${cityName}`)
     .then(resp => resp.json())
     .then(data => setCurrentWeatherInfo(data))
-  }, [])
+  }, [cityName])
 
   useEffect(() => {
     const data = window.localStorage.getItem('cardInfo')
