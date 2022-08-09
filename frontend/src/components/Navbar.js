@@ -27,7 +27,7 @@ return (
     <nav>
         {(menu || screenWidth > 500) && (
             <ul className='list'>
-                <a href="#destinationdisplay" style={{ textDecoration: 'none'}}><li className='items' style={{ textDecoration: 'none'}}>Featured Cities</li></a>
+                <a href="/#destinationdisplay" style={{ textDecoration: 'none'}}><li className='items' style={{ textDecoration: 'none'}}>Featured Cities</li></a>
             </ul>
         )}
     </nav>
