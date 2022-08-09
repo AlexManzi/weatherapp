@@ -898,7 +898,7 @@ function Home() {
   let [displayName, setDisplayName] = useState('')
 
 useEffect(() => {
-  fetch(`/api/cities/NY`)
+  fetch(`/api/showCityByCityName?cityName=${cityName}`)
   .then(resp => resp.json())
   .then(data => setCurrentWeather(data))
 }, [])
