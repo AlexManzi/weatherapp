@@ -163,7 +163,7 @@
     #hpagemain {
         display: grid;
         grid-template-columns: auto;
-        height: 305vh;
+        height: 315vh;
         background-color: #f7c59f
     }
     #destinationdisplay {

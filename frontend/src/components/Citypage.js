@@ -75,6 +75,15 @@ useEffect(() => {
   }, [])
 
   useEffect(() => {
+    const data = window.localStorage.getItem('currentInfo')
+    setCurrentWeatherInfo(JSON.parse(data))
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('currentInfo', JSON.stringify(currentWeatherInfo))
+  }, [currentWeatherInfo])
+
+  useEffect(() => {
     const data = window.localStorage.getItem('hourInfo')
     setHourlyWeatherInfo(JSON.parse(data))
   }, [])
