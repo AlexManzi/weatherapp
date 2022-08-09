@@ -3,9 +3,15 @@ import './Titlecard.css';
 
 function Titlecard({weather}) {
 
-    let currentTemp = (weather ? weather.currentTemp : "")
-    let currentIcon = (weather ? weather.currentIcon : "")
-    let currentVibes = (weather ? weather.currentVibes : "")
+    function temperatureConverter(valNum) {
+        valNum = parseFloat(valNum);
+        let newVal = ((valNum-273.15)*1.8)+32
+        return newVal.toFixed(0)
+    }
+
+    let currentTemp = (weather ? temperatureConverter(weather.currentTemp) : "")
+    let currentIcon = (weather ? weather.icon : "")
+    let currentVibes = (weather ? temperatureConverter(weather.feelsLike) : "")
 
     console.log(weather)
 
