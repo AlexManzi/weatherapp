@@ -6,7 +6,8 @@ import Hourlycard from './Hourlycard';
 
 function Citypage() {
   const location = useLocation()
-  let cityName = location.state.cityname
+  console.log(location)
+  let cityName = location.someData.cityname
   let [currentWeatherInfo, setCurrentWeatherInfo] = useState([])
   let [hourlyWeatherInfo, setHourlyWeatherInfo] = useState([])
   let [dailyWeatherInfo, setDailyWeatherInfo] = useState([])
