@@ -2,7 +2,7 @@
     padding-top: 12vh;
     display: grid;
     grid-template-columns: 75% 25%;
-    background-image: linear-gradient(315deg, #71dbe3 0%, #647dee 74%);
+    background-image: url("https://images.unsplash.com/photo-1536514498073-50e69d39c6cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80");
     background-repeat: no-repeat;
     background-size: 100vw;
     padding-bottom: 35vh;
@@ -36,7 +36,7 @@
 }
 
 #fiveday {
-    background-color: #cbd4e7;
+    background: rgba(199, 217, 229, 0.6);
     height: 283px;
     width: 70vw;
     margin-left: 2vw;
@@ -46,11 +46,11 @@
     margin-top: 92px;
     border-radius: 5px;
     overflow-x: auto;
-    opacity: .92;
+    box-shadow: 5px 5px 5px 1px #A9C7D7;
 }
 
 #rightwrapper {
-    background-color: #f7c59f;
+    background: rgba(199, 217, 229, 0.6);
     height: 600px;
     width: 280px;
     margin-top: 30px;
@@ -58,7 +58,7 @@
     padding: 2vh;
     border-radius: 5px;
     margin-left: 3vw;
-    opacity: .92;
+    box-shadow: 5px 5px 5px 1px #A9C7D7;
 }
 
 #swingRight {
