@@ -24,6 +24,8 @@ function Citypage() {
   return 0;
 }
 
+console.log(page)
+
 function compare_days( a, b )
   {
   if ( a.dailyTime < b.dailyTime){
@@ -80,23 +82,9 @@ useEffect(() => {
     setPage(JSON.parse(data))
   }, [])
 
-  console.log(page)
-
 
 function getHourFromUnixTimestamp(timestamp, cityName) {
   let hours = new Date(timestamp * 1000).getHours()
-  if (cityName === "SF") {
-    hours = hours - 3
-  }
-  else if (cityName === "RM") {
-    hours = hours + 6
-  }
-  else if (cityName === "TK") {
-    hours = hours + 12
-  }
-  else if (cityName === "SYD") {
-    hours = hours + 14
-  }
   if( hours > 12 && hours < 24) {
     hours = hours - 12
     return `${hours} pm`
@@ -141,8 +129,6 @@ function getHourFromUnixTimestamp(timestamp, cityName) {
   // console.log(dailyWeatherInfo)
   // console.log(hourlyWeatherInfo)
   // console.log(currentWeatherInfo)
-
-console.log(cityName)
 
   
   return (

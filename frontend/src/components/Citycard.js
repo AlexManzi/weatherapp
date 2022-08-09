@@ -11,17 +11,17 @@ function Citycard({cityName}) {
     useEffect(() => {
       fetch(`/api/showCityByCityName?cityName=${cityName}`)
       .then(resp => resp.json())
-      .then(data => {console.log(data[0]);setDisplayedCard(data[0])}) 
-  }, [])
-
-  useEffect(() => {
-    const data = window.localStorage.getItem('cardInfo')
-    setWeatherInfo(JSON.parse(data))
+      .then(data => {setDisplayedCard(data[0])}) 
   }, [])
 
   useEffect(() => {
     window.localStorage.setItem('cardInfo', JSON.stringify(weatherInfo))
   }, [weatherInfo])
+  
+  useEffect(() => {
+    const data = window.localStorage.getItem('cardInfo')
+    setWeatherInfo(JSON.parse(data))
+  }, [])
 
   function clickInfo(e) {
     setWeatherInfo(e); 
