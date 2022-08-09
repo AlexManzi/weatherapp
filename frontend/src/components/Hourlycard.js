@@ -1,9 +1,12 @@
 import React from 'react'
 import './Hourlycard.css';
 
-function Hourlycard() {
+function Hourlycard({hour}) {
+
   return (
-    <div>Hourlycard</div>
+    <div id="hourlycard">
+      y
+    </div>
   )
 }
 

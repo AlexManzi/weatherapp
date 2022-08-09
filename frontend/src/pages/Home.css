@@ -16,7 +16,7 @@
 }
 
 #leftside {
-    padding-top: 20vh;
+    padding-top: 10vh;
     padding-left: 5vw;
 }
 
@@ -39,10 +39,12 @@
     grid-template-columns: auto auto auto;
     column-gap: 1vh;
     text-align: end;
+    font-size: .8rem;
 }
 
 #feelslike {
-    margin-top: -1.5vh;
+    margin-top: -4vh;
+    font-size: .9rem;
 }
 
 #weatherpic {
@@ -56,7 +58,7 @@
     height: 12vh;
     margin-left: auto;
     border-radius: 5px;
-    border: 2px solid #f7c59f;
+    border: 5px solid #f7c59f;
 }
 
 #maincityinfo {
@@ -68,7 +70,7 @@
 }
 
 #destinationdisplay {
-    margin-top: -40vh;
+    margin-top: -38vh;
 }
 
 #destinationtitle {

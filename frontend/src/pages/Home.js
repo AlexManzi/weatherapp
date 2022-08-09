@@ -972,22 +972,6 @@ useEffect(() => {
     />
   ))
 
-  if (cityName === "NY") {
-    cityName = "New York City"
-  }
-  else if (cityName === "SF") {
-    cityName = "San Francisco"
-  }
-  else if (cityName === "SYD") {
-    cityName = "Sydney"
-  }
-  else if (cityName === "TK") {
-    cityName = "Tokyo"
-  }
-  else if (cityName === "RM") {
-    cityName = "RM"
-  }
-
   return (
     <div id="hpagemain">
     <div id="hpage">

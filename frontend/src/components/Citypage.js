@@ -12,9 +12,9 @@ function Citypage() {
   let [dailyWeatherInfo, setDailyWeatherInfo] = useState([])
 
   useEffect(() => {
+    console.log(cityName)
     fetch(`http://localhost:3000/showHoursByCityName?cityName=${cityName}`)
     .then(resp => resp.json())
-    .then(data => console.log(data))
     .then(data => setHourlyWeatherInfo(data))
   }, [])
 
@@ -30,12 +30,39 @@ function Citypage() {
     .then(data => setCurrentWeatherInfo(data))
   }, [])
 
-  // let hourlyInfo = hourlyWeatherInfo.map(hour => (
-  //   <Hourlycard
-  //     key={hour.id}
-  //     hour={hour}
-  //     />
-  // ))
+  useEffect(() => {
+    const data = window.localStorage.getItem('hourInfo')
+    setHourlyWeatherInfo(JSON.parse(data))
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('hourInfo', JSON.stringify(hourlyWeatherInfo))
+  }, [hourlyWeatherInfo])
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('dailyInfo')
+    setDailyWeatherInfo(JSON.parse(data))
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('dailyInfo', JSON.stringify(dailyWeatherInfo))
+  }, [dailyWeatherInfo])
+
+
+
+  let hourlyInfo = hourlyWeatherInfo.map(hour => (
+    <Hourlycard
+      key={hour.id}
+      hour={hour}
+      />
+  ))
+
+  let dailyInfo = dailyWeatherInfo.map(day => (
+    <Dailycard
+      key={day.id}
+      hour={day}
+      />
+  ))
 
   let cityTemp = (currentWeatherInfo ? currentWeatherInfo.currentTemp : "")
   let cityTime = (currentWeatherInfo ? currentWeatherInfo.time : "")
@@ -47,24 +74,8 @@ function Citypage() {
   let citySunset = (currentWeatherInfo ? currentWeatherInfo.sunset : "")
 
   // console.log(dailyWeatherInfo)
-  // console.log(hourlyWeatherInfo)
-  console.log(currentWeatherInfo)
-
-  if (cityName === "NY") {
-    cityName = "New York"
-  }
-  else if (cityName === "SF") {
-    cityName = "San Francisco"
-  }
-  else if (cityName === "SYD") {
-    cityName = "Sydney"
-  }
-  else if (cityName === "TK") {
-    cityName = "Tokyo"
-  }
-  else if (cityName === "RM") {
-    cityName = "RM"
-  }
+  console.log(hourlyWeatherInfo)
+  // console.log(currentWeatherInfo)
   
   return (
     <div id="citypage">
@@ -87,12 +98,12 @@ function Citypage() {
       </div>
       </div>
       <div id="fiveday">
-
+        {dailyInfo}
       </div>
       </div>
       <div id="rightwrapper">
         <h2>Hourly Forecast</h2>
-        {/* {hourlyInfo} */}
+        {hourlyInfo}
       </div>
       
     </div>
