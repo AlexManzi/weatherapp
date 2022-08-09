@@ -923,8 +923,8 @@ useEffect(() => {
 }, [])
 
   let cityName = (currentWeather ? currentWeather.cityName : "")
-  let currentTemp = (currentWeather ? currentWeather.currentTemp : "")
-  let currentVibes = (currentWeather ? currentWeather.feelsLike : "")
+  let currentTemp = (currentWeather ? temperatureConverter(currentWeather.currentTemp) : "")
+  let currentVibes = (currentWeather ? temperatureConverter(currentWeather.feelsLike) : "")
   let currentIcon = (currentWeather ? currentWeather.icon : "")
   function populateTablesWithCity(cityName, cityId) {
 
@@ -1007,6 +1007,11 @@ useEffect(() => {
       hour={hour}
       />
   ))
+
+  function temperatureConverter(valNum) {
+    valNum = parseInt(valNum);
+    return ((valNum-273.15)*1.8)+32
+  }
 
 
   return (
