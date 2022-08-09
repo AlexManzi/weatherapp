@@ -25,4 +25,9 @@ class CitiesController < ApplicationController
         city = City.find_by!(params[:cityName])
         render json: city
     end
+
+    def showByCityName
+        city = City.where(:cityName => params[:cityName])
+        render json: city
+    end
 end

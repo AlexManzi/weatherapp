@@ -925,8 +925,8 @@ useEffect(() => {
   let currentTemp = (currentWeather ? currentWeather.currentTemp : "")
   let currentVibes = (currentWeather ? currentWeather.feelsLike : "")
   let currentIcon = (currentWeather ? currentWeather.icon : "")
+  function populateTablesWithCity(cityName, cityId) {
 
-  useEffect(() => {
     fetch("http://localhost:3000/cities", {
       method: "POST",
       headers: {
@@ -941,7 +941,7 @@ useEffect(() => {
         sunset: cityOne.current.sunset,
         icon: cityOne.current.weather[0].icon,
         humidity: cityOne.current.humidity,
-        cityName: "NY"
+        cityName: cityName
       })
     })
     for (let i=0; i < 24; i++) {
@@ -956,8 +956,8 @@ useEffect(() => {
         temp: hour.temp,
         icon: hour.weather[0].icon,
         hourNumber: i,
-        cityName: "NY",
-        city_id: 1
+        cityName: cityName,
+        city_id: cityId
       })
     })
     }
@@ -974,16 +974,22 @@ useEffect(() => {
         tempL: day.temp.min,
         icon: day.weather[0].icon,
         dayNumber: i,
-        cityName: "NY",
-        city_id: 1
+        cityName: cityName,
+        city_id: cityId
       })
     })
     }
-  })
+  }
 
-  console.log(currentWeather)
+  
+
 
   let cities = ["NY", "SF", "SYD", "TK", "RM"]
+  useEffect(() => {
+    cities.forEach(city => {
+      populateTablesWithCity(city, cities.indexOf(city)+1)
+    });
+  })
   let shownArray = cities.map(city => (
     <Citycard
     key={city.id}
@@ -1013,7 +1019,7 @@ useEffect(() => {
           <h3 id="feelslike">It feels like {currentVibes}°</h3>
         </div>
         <div id="maincityinfo">
-          <h2>Hourly Forecast</h2>
+          <h2>NY Hourly Forecast</h2>
           {currentHourly}
         </div>
       </div>

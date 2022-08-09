@@ -22,6 +22,17 @@ function Citypage() {
   return 0;
 }
 
+function compare_days( a, b )
+  {
+  if ( a.dailyTime < b.dailyTime){
+    return -1;
+  }
+  if ( a.dailyTime > b.dailyTime){
+    return 1;
+  }
+  return 0;
+}
+
   useEffect(() => {
     fetch(`http://localhost:3000/showHoursByCityName?cityName=${cityName}`)
     .then(resp => resp.json())
@@ -33,7 +44,10 @@ function Citypage() {
   useEffect(() => {
     fetch(`http://localhost:3000/showDaysByCityName?cityName=${cityName}`)
     .then(resp => resp.json())
-    .then(data => setDailyWeatherInfo(data))
+    .then(data => {
+      data.sort(compare_days);
+      console.log(data)
+      setDailyWeatherInfo(data)})
   }, [])
 
   useEffect(() => {
@@ -105,18 +119,20 @@ function getHourFromUnixTimestamp(timestamp) {
       <div id="currentCityInfo">
       <div id="cityInfo">
         <h1>{cityName}</h1>
-        <h3>Sunrise today is {citySunrise}</h3>
-        <h3>Sunset today is {citySunset}</h3>
+        <h3>Sunrise today is at {citySunrise}</h3>
+        <h3>Sunset today is at {citySunset}</h3>
       </div>
       <div id="cityWeather">
         <div id="weatherline">
-          <h2>{cityTemp}</h2>
-          <img src={`http://openweathermap.org/img/wn/${cityIcon}.png`}/>
+          <h2>{cityTemp}°</h2>
+          <img id="iconpic" src={`http://openweathermap.org/img/wn/${cityIcon}.png`}/>
         </div>
-        <h3>{cityTime}</h3>
-        <h3>{cityVibes}</h3>
-        <h3>{cityHumidity}</h3>
-        <h3>{cityUvi}</h3>
+        <div id="swingRight">
+        <h3>The current time is {cityTime}</h3>
+        <h3>It feels like {cityVibes}°</h3>
+        <h3>{cityHumidity}% Humidity</h3>
+        <h3>{cityUvi} UV Index</h3>
+        </div>
       </div>
       </div>
       <div id="fiveday">

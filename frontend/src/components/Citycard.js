@@ -7,31 +7,24 @@ function Citycard({cityName}) {
   let [displayedCard, setDisplayedCard] = useState({})
 
     useEffect(() => {
-      fetch("http://localhost:3000/cities/")
+      fetch(`http://localhost:3000/showCityByCityName?cityName=${cityName}`)
       .then(resp => resp.json())
-      .then(data => setDisplayedCard(data)) 
+      .then(data => {console.log(data[0]);setDisplayedCard(data[0])}) 
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('cardInfo', JSON.stringify(displayedCard))
+  }, [displayedCard])
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('cardInfo')
+    setDisplayedCard(JSON.parse(data))
   }, [])
 
   let cityTitle = (displayedCard ? displayedCard.cityName : "")
   let currentTemp = (displayedCard  ? displayedCard.currentTemp : "")
   let currentVibes = (displayedCard  ? displayedCard.feelsLike : "")
   let currentIcon = (displayedCard  ? displayedCard.icon : "")
-
-  // if (cityName === "NY") {
-  //   cityName = "New York"
-  // }
-  // else if (cityName === "SF") {
-  //   cityName = "San Francisco"
-  // }
-  // else if (cityName === "SYD") {
-  //   cityName = "Sydney"
-  // }
-  // else if (cityName === "TK") {
-  //   cityName = "Tokyo"
-  // }
-  // else if (cityName === "RM") {
-  //   cityName = "Rome"
-  // }
 
   console.log(cityName)
   return (

@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   get "/showDaysByCityName", to:"days#showByCityName"
   get "/showHoursByCityName", to:"hours#showByCityName"
+  get "/showCityByCityName", to:"cities#showByCityName"
+
 end
