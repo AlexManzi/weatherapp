@@ -74,32 +74,32 @@ useEffect(() => {
     .then(data => setCurrentWeatherInfo(data))
   }, [])
 
-  useEffect(() => {
-    const data = window.localStorage.getItem('currentInfo')
-    setCurrentWeatherInfo(JSON.parse(data))
-  }, [])
+  // useEffect(() => {
+  //   const data = window.localStorage.getItem('currentInfo')
+  //   setCurrentWeatherInfo(JSON.parse(data))
+  // }, [])
 
-  useEffect(() => {
-    window.localStorage.setItem('currentInfo', JSON.stringify(currentWeatherInfo))
-  }, [currentWeatherInfo])
+  // useEffect(() => {
+  //   window.localStorage.setItem('currentInfo', JSON.stringify(currentWeatherInfo))
+  // }, [currentWeatherInfo])
 
-  useEffect(() => {
-    const data = window.localStorage.getItem('hourInfo')
-    setHourlyWeatherInfo(JSON.parse(data))
-  }, [])
+  // useEffect(() => {
+  //   const data = window.localStorage.getItem('hourInfo')
+  //   setHourlyWeatherInfo(JSON.parse(data))
+  // }, [])
 
-  useEffect(() => {
-    window.localStorage.setItem('hourInfo', JSON.stringify(hourlyWeatherInfo))
-  }, [hourlyWeatherInfo])
+  // useEffect(() => {
+  //   window.localStorage.setItem('hourInfo', JSON.stringify(hourlyWeatherInfo))
+  // }, [hourlyWeatherInfo])
 
-  useEffect(() => {
-    const data = window.localStorage.getItem('dailyInfo')
-    setDailyWeatherInfo(JSON.parse(data))
-  }, [])
+  // useEffect(() => {
+  //   const data = window.localStorage.getItem('dailyInfo')
+  //   setDailyWeatherInfo(JSON.parse(data))
+  // }, [])
 
-  useEffect(() => {
-    window.localStorage.setItem('dailyInfo', JSON.stringify(dailyWeatherInfo))
-  }, [dailyWeatherInfo])
+  // useEffect(() => {
+  //   window.localStorage.setItem('dailyInfo', JSON.stringify(dailyWeatherInfo))
+  // }, [dailyWeatherInfo])
 
 function getHourFromUnixTimestamp(timestamp) {
   let hours = new Date(timestamp * 1000).getHours()
