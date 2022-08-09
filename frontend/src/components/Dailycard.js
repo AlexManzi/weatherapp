@@ -36,8 +36,6 @@ function Dailycard({day}) {
   let cityTempL = (day ? temperatureConverter(day.tempL) : "")
   let cityIcon = (day ? day.icon : "")
 
-  console.log(day)
-
 
   return (
     <div id="dailycard">

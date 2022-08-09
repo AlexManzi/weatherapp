@@ -24,8 +24,6 @@ function Citypage() {
   return 0;
 }
 
-console.log(page)
-
 function compare_days( a, b )
   {
   if ( a.dailyTime < b.dailyTime){
@@ -83,7 +81,7 @@ useEffect(() => {
   }, [])
 
 
-function getHourFromUnixTimestamp(timestamp, cityName) {
+function getHourFromUnixTimestamp(timestamp) {
   let hours = new Date(timestamp * 1000).getHours()
   if( hours > 12 && hours < 24) {
     hours = hours - 12
@@ -137,8 +135,8 @@ function getHourFromUnixTimestamp(timestamp, cityName) {
       <div id="currentCityInfo">
       <div id="cityInfo">
         <h1 id="cityName">{cName}</h1>
-        <h3>Sunrise today is at {citySunrise}</h3>
-        <h3>Sunset today is at {citySunset}</h3>
+        <h3>Sunrise today is at {citySunrise} EST</h3>
+        <h3>Sunset today is at {citySunset} EST</h3>
       </div>
       <div id="cityWeather">
         <div id="weatherline">
@@ -146,7 +144,7 @@ function getHourFromUnixTimestamp(timestamp, cityName) {
           <img id="iconpic" src={`http://openweathermap.org/img/wn/${cityIcon}.png`}/>
         </div>
         <div id="swingRight">
-        <h3>The local time is {cityTime}</h3>
+        <h3>The current time is {cityTime} EST</h3>
         <h3>It feels like {cityVibes}°</h3>
         <h3>{cityHumidity}% Humidity</h3>
         <h3>{cityUvi} UV Index</h3>

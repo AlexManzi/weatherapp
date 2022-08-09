@@ -24,8 +24,6 @@ function Hourlycard({hour}) {
   let hourTemp = (hour ? temperatureConverter(hour.temp) : "")
   let hourIcon = (hour ? hour.icon : "")
 
-  console.log(hour)
-
   return (
     <div id="hourlycard">
       <div id="hourrow">
