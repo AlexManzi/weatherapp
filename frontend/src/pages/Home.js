@@ -3,8 +3,10 @@ import './Home.css';
 import Citycard from '../components/Citycard.js';
 import Hourlycard from '../components/Hourlycard';
 import Titlecard from '../components/Titlecard';
+import { useLocation } from 'react-router-dom'
 
 function Home() {
+  window.history.replaceState({}, document.title)
   let [cityOne, setCityOne] = useState({
     "lat": 39.31,
     "lon": -74.5,
@@ -920,6 +922,7 @@ let apiKey = "75ed5b185b55fa3e505d70d93a44599e"
 let citiesWithLatLongs = {"NY": [40.71, -74.00], "SF": [37.77, -122.41], "SYD": [-33.8, 151.2], "TK": [35.67, 139.65], "RM": [41.9, 12.49]}
 
 useEffect(() => {
+  
   let cities = Object.keys(citiesWithLatLongs)
   for(let i = 0; i < cities.length; i++) {
     let city = cities[i]
