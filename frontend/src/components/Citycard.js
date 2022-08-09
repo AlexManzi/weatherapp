@@ -3,7 +3,6 @@ import './Citycard.css';
 import { Link } from "react-router-dom"
 
 function Citycard({cityName}) {
-  let [cards, setCards] = useState()
   let [displayedCard, setDisplayedCard] = useState({})
   let [cName, setCName] = useState('')
   let [weatherInfo, setWeatherInfo] = useState('')
