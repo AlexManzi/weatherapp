@@ -99,6 +99,8 @@ function getHourFromUnixTimestamp(timestamp) {
       />
   ))
 
+  //adding this line for heroku test
+
   let cityTemp = (currentWeatherInfo ? currentWeatherInfo.currentTemp : "")
   let cityTime = (currentWeatherInfo ? getHourFromUnixTimestamp(currentWeatherInfo.time) : "")
   let cityVibes = (currentWeatherInfo ? currentWeatherInfo.feelsLike : "")
