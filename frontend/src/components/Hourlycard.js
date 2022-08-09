@@ -8,6 +8,8 @@ function getHourFromUnixTimestamp(timestamp) {
     return `${hours} pm`
   } else if (hours === 12) {
     return "12 pm"
+  } else if (hours === 24 || hours === 0) {
+    return "12 am"
   }
   return `${hours} am`
   
