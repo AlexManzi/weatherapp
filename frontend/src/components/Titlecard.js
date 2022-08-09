@@ -3,9 +3,11 @@ import './Titlecard.css';
 
 function Titlecard({hour}) {
 
-    let currentTemp = (hour ? hour.currentTemp : "Loading")
-    let currentIcon = (hour ? hour.currentIcon : "Loading")
-    let currentVibes = (hour ? hour.currentVibes : "Loading")
+    let currentTemp = (hour ? hour.currentTemp : "")
+    let currentIcon = (hour ? hour.currentIcon : "")
+    let currentVibes = (hour ? hour.currentVibes : "")
+
+    console.log(hour)
 
   return (
     <div id="topdiv">
