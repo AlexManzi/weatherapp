@@ -10,10 +10,12 @@ function Citycard({cityName}) {
     useEffect(() => {
       fetch(`/api/showCityByCityName?cityName=${cityName}`)
       .then(resp => resp.json())
-      .then(data => {console.log(data[0]);setDisplayedCard(data[0])}) 
+      .then(data => {
+        console.log(data[0]);
+        window.localStorage.setItem('cardInfo', JSON.stringify(data[0]))
+        }) 
   }, [])
 
-  window.localStorage.setItem('cardInfo', JSON.stringify(displayedCard))
 
 
   useEffect(() => {
@@ -34,6 +36,8 @@ function Citycard({cityName}) {
   let currentDesc = (displayedCard  ? displayedCard.weatherdesc : "")
 
   useEffect(() => {
+    
+
     if (cityName === "NY") {
       setCName("New York") 
     }
