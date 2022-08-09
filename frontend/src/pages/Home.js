@@ -933,7 +933,7 @@ useEffect(() => {
   }
   
 
-  fetch("/api/showCityByCityName?cityName=NY")
+  fetch("/api/showCityByCityNamecityName=NY")
   .then(resp => resp.json())
   .then(data => { 
     console.log(data) 
@@ -1009,7 +1009,7 @@ useEffect(() => {
   let testArr = ["1"]
 
 
-  let mainWeather = nyHourly.map(weather => (
+  let mainWeather = nyWeather.map(weather => (
     <Titlecard
       key={weather.id}
       weather={weather}
@@ -1031,10 +1031,6 @@ useEffect(() => {
       hour={hour}
       />
   ))
-
-
-  
-
 
   return (
     <div id="hpagemain">
