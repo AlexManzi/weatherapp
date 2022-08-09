@@ -895,6 +895,7 @@ function Home() {
 })
   let [currentWeather, setCurrentWeather] = useState([])
   let [nyHourly, setNyHourly] = useState([])
+  let [displayName, setDisplayName] = useState('')
 
 useEffect(() => {
   fetch(`/api/cities/NY`)
@@ -988,8 +989,11 @@ useEffect(() => {
   useEffect(() => {
     cities.forEach(city => {
       populateTablesWithCity(city, cities.indexOf(city)+1)
-    });
-  })
+      if (city === "NY") {
+        setDisplayName("New York") 
+      }
+      })
+    })
   let shownArray = cities.map(city => (
     <Citycard
     key={city.id}
@@ -1004,6 +1008,7 @@ useEffect(() => {
       />
   ))
 
+
   return (
     <div id="hpagemain">
     <div id="hpage">
@@ -1012,7 +1017,7 @@ useEffect(() => {
       </div>
       <div id="rightside">
         <div id="maincitytop">
-          <h2>{cityName}</h2>
+          <h2>{displayName}</h2>
           <h2>{currentTemp}°</h2>
           <img id="weatherpic" src={`http://openweathermap.org/img/wn/${currentIcon}.png`}/>
           <h2></h2>

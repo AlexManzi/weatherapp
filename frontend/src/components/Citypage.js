@@ -10,6 +10,7 @@ function Citypage() {
   let [currentWeatherInfo, setCurrentWeatherInfo] = useState([])
   let [hourlyWeatherInfo, setHourlyWeatherInfo] = useState([])
   let [dailyWeatherInfo, setDailyWeatherInfo] = useState([])
+  let [cName, setCName] = useState('')
 
   function compare_hours( a, b )
   {
@@ -32,6 +33,24 @@ function compare_days( a, b )
   }
   return 0;
 }
+
+useEffect(() => {
+  if (cityName === "NY") {
+    setCName("New York") 
+  }
+  if (cityName === "SF") {
+    setCName("San Francisco") 
+  }
+  if (cityName === "SYD") {
+    setCName("Sydney") 
+  }
+  if (cityName === "TK") {
+    setCName("Tokyo") 
+  }
+  if (cityName === "RM") {
+    setCName("Rome") 
+  }
+}, [])
 
   useEffect(() => {
     fetch(`/api/showHoursByCityName?cityName=${cityName}`)
@@ -119,7 +138,7 @@ function getHourFromUnixTimestamp(timestamp) {
       <div id="leftwrapper">
       <div id="currentCityInfo">
       <div id="cityInfo">
-        <h1>{cityName}</h1>
+        <h1>{cName}</h1>
         <h3>Sunrise today is at {citySunrise}</h3>
         <h3>Sunset today is at {citySunset}</h3>
       </div>
