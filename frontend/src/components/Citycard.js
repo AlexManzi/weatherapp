@@ -25,7 +25,7 @@ function Citycard({cityName}) {
   function temperatureConverter(valNum) {
     valNum = parseFloat(valNum);
     let newVal = ((valNum-273.15)*1.8)+32
-    return newVal.toFixed(2)
+    return newVal.toFixed(0)
   }
 
   let cityTitle = (displayedCard ? displayedCard.cityName : "")
@@ -58,7 +58,7 @@ function Citycard({cityName}) {
         <h1 id="cardTitle">{cName}</h1>
         <div id="currentWeather">
           <h2>{currentTemp}°</h2>
-          <img src={`http://openweathermap.org/img/wn/${currentIcon}.png`}/>
+          <img src={`http://openweathermap.org/img/wn/${currentIcon}.png`} id="weatherIcon"/>
         </div>
     </div>
     </Link>

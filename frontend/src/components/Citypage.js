@@ -122,7 +122,7 @@ function getHourFromUnixTimestamp(timestamp) {
   function temperatureConverter(valNum) {
     valNum = parseFloat(valNum);
     let newVal = ((valNum-273.15)*1.8)+32
-    return newVal.toFixed(2)
+    return newVal.toFixed(0)
   }
 
   let cityTemp = (currentWeatherInfo ? temperatureConverter(currentWeatherInfo.currentTemp) : "")

@@ -1,6 +1,7 @@
 #dailycard {
     border-right: 1px solid;
     border-left: 1px solid;
+    width: 320px;
 }
 
 #tworow {
@@ -11,7 +12,7 @@
 }
 
 #weathericon {
-    height: 70px;
+    height: 82px;
     width: auto;
 }
 

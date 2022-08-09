@@ -28,7 +28,7 @@ function Dailycard({day}) {
   function temperatureConverter(valNum) {
     valNum = parseFloat(valNum);
     let newVal = ((valNum-273.15)*1.8)+32
-    return newVal.toFixed(2)
+    return newVal.toFixed(0)
   }
 
   let cityDay = (day ? getDayFromUnixTimestamp(day.dailyTime) : "")
@@ -43,8 +43,8 @@ function Dailycard({day}) {
     <div id="dailycard">
       <h1 id="dailyHeading">{cityDay}</h1>
       <div id="tworow">
-        <h2>The High is {cityTempH}°</h2>
-        <h2>The Low is {cityTempL}°</h2>
+        <h2>The High will be {cityTempH}°</h2>
+        <h2>The Low will be {cityTempL}°</h2>
       </div>
       <img id="weathericon" src={`http://openweathermap.org/img/wn/${cityIcon}.png`}/>
     </div>
