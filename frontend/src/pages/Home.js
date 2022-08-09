@@ -933,10 +933,11 @@ useEffect(() => {
   }
   
 
-  fetch("/api/showCityByCityNamecityName=NY")
+  fetch("/api/showCityByCityName?cityName=NY")
   .then(resp => resp.json())
   .then(data => { 
-    setNyWeather([data])
+    console.log(data) 
+    setNyWeather(data)
   })
 
 
@@ -949,6 +950,7 @@ useEffect(() => {
 
   
   function populateTablesWithCity(cityWeatherInfo, cityName, cityId) {
+    console.log(cityWeatherInfo.current.temp)
     fetch("/api/cities", {
       method: "POST",
       headers: {
@@ -1004,8 +1006,6 @@ useEffect(() => {
     })
     }
   }
-  let testArr = ["1"]
-
 
   let mainWeather = nyWeather.map(weather => (
     <Titlecard
@@ -1013,6 +1013,8 @@ useEffect(() => {
       weather={weather}
       />
   ))
+
+  console.log(nyWeather)
 
   let shownArray = Object.keys(citiesWithLatLongs).map(city => (
     <Citycard
@@ -1027,7 +1029,6 @@ useEffect(() => {
       hour={hour}
       />
   ))
-
 
   return (
     <div id="hpagemain">
