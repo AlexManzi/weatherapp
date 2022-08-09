@@ -59,5 +59,13 @@ li {
     .list {
         display: none;
     }
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 70px;
+        background-color: #F6F8FA;
+        z-index: 1;
+    }
 }
 

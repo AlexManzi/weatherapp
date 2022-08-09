@@ -26,3 +26,9 @@
         border-radius: 5px;
 }
 }
+
+@media only screen and (max-width: 385px) {
+    #wholecard {
+        font-size: .85rem;
+    }
+}
