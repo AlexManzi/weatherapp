@@ -1,0 +1,13 @@
+#topdiv {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+#feelslike {
+    margin-top: -2vh;
+}
+
+#weatherpic {
+    height: 82px;
+    width: auto;
+}

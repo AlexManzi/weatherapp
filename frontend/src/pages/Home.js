@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './Home.css';
 import Citycard from '../components/Citycard.js';
 import Hourlycard from '../components/Hourlycard';
+import Titlecard from '../components/Titlecard';
 
 function Home() {
   let [cityOne, setCityOne] = useState({
@@ -894,6 +895,7 @@ function Home() {
       }]
 })
   let [nyHourly, setNyHourly] = useState([])
+  let [nyWeather, setNyWeather] = useState([])
   let [currentTemp, setCurrentTemp] = useState(0)
   let [currentVibes, setCurrentVibes] = useState(0)
   let [currentIcon, setCurrentIcon] = useState("")
@@ -935,10 +937,8 @@ useEffect(() => {
   .then(resp => resp.json())
   .then(data => { 
     console.log(data) 
-    setCurrentTemp(temperatureConverter(data.currentTemp))
-    setCurrentVibes(temperatureConverter(data.feelsLike))
-    setCurrentIcon(data.icon)
-    })
+    setNyWeather([data])
+  })
 
 
   fetch("/api/showHoursByCityName?cityName=NY")
@@ -1006,8 +1006,17 @@ useEffect(() => {
     })
     }
   }
+  let testArr = ["1"]
 
-  
+
+  let mainWeather = nyWeather.map(weather => (
+    <Titlecard
+      key={weather.id}
+      weather={weather}
+      />
+  ))
+
+  console.log(nyWeather)
 
   let shownArray = Object.keys(citiesWithLatLongs).map(city => (
     <Citycard
@@ -1034,12 +1043,8 @@ useEffect(() => {
         <h1 id="mainheading">Live Forecasts So You’ll Never Forget Your Umbrella.</h1>
       </div>
       <div id="rightside">
-        <div id="maincitytop">
-          <h1 id="placeName">New York</h1>
-          <h2>Currently {currentTemp}°</h2>
-          <img id="weatherpic" src={`http://openweathermap.org/img/wn/${currentIcon}.png`}/>
-          <h2></h2>
-          <h2 id="feelslike">It feels like {currentVibes}°</h2>
+      <div id="maincitytop">
+          {mainWeather}
         </div>
         <div id="maincityinfo">
           <h2>NY Hourly Forecast</h2>
