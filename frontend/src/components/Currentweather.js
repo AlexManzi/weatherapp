@@ -1,5 +1,5 @@
 import React from 'react'
-import './Currentweather.css';
+import './Citypage';
 
 function Currentweather({weather, cName}) {
     function temperatureConverter(valNum) {
@@ -20,7 +20,7 @@ function Currentweather({weather, cName}) {
         }
         return `${hours} am`
     }
-    
+
     let cityTemp = (weather ? temperatureConverter(weather.currentTemp) : "")
     let cityVibes = (weather ? temperatureConverter(weather.feelsLike) : "")
     let cityHumidity = (weather ? weather.humidity : "")

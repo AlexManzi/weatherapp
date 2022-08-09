@@ -82,13 +82,13 @@ useEffect(() => {
     setPage(JSON.parse(data))
   }, [])
 
-  let currentInfo = currentWeatherInfo.map(weather => (
+  let currentInfo = (
     <Currentweather
-    key={weather.id}
-    weather={weather}
+    key={currentWeatherInfo.id}
+    weather={currentWeatherInfo}
     cName={cName}
     />
-  ))
+  )
 
   let hourlyInfo = hourlyWeatherInfo.map(hour => (
     <Hourlycard
