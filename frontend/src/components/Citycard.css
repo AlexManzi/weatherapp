@@ -8,3 +8,21 @@
 #hidden {
     display: none;;
 }
+
+@media only screen and (max-width: 450px) {
+    #wholecard {
+        background-color: #d9d9d9;
+        height: 45vw;
+        width: 60vw;
+        border-radius: 5px;
+}
+}
+
+@media only screen and (max-width: 385px) {
+    #wholecard {
+        background-color: #d9d9d9;
+        height: 40vw;
+        width: 55vw;
+        border-radius: 5px;
+}
+}

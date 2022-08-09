@@ -9,3 +9,8 @@
     justify-content: space-evenly;
     column-gap: 2vw;
 }
+
+#weathericon {
+    height: 70px;
+    width: auto;
+}

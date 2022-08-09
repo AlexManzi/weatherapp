@@ -55,3 +55,9 @@ li {
     color: #134e89;
 }
 
+@media only screen and (max-width: 450px) {
+    .list {
+        display: none;
+    }
+}
+
