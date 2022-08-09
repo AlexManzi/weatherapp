@@ -933,7 +933,7 @@ useEffect(() => {
   }
   
 
-  fetch("/api/showCityByCityNamecityName=NY")
+  fetch("/api/showCityByCityName?cityName=NY")
   .then(resp => resp.json())
   .then(data => { 
     console.log(data) 
@@ -1006,8 +1006,6 @@ useEffect(() => {
     })
     }
   }
-  let testArr = ["1"]
-
 
   let mainWeather = nyWeather.map(weather => (
     <Titlecard
