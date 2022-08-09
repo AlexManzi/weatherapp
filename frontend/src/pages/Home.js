@@ -893,9 +893,15 @@ function Home() {
         "uvi": 3.38
       }]
 })
-  let [currentWeather, setCurrentWeather] = useState({})
+  let [currentWeather, setCurrentWeather] = useState([])
   let [nyHourly, setNyHourly] = useState([])
   let [displayName, setDisplayName] = useState('')
+
+useEffect(() => {
+  fetch(`/api/cities/NY`)
+  .then(resp => resp.json())
+  .then(data => setCurrentWeather(data))
+}, [])
 
 function compare_hours( a, b )
   {
@@ -921,9 +927,11 @@ useEffect(() => {
     fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`)
     .then(resp => resp.json())
     .then(data => {
+      console.log(data)
       populateTablesWithCity(data, city, city.id)
     })
   }
+  
 
   fetch("/api/showCityByCityName?cityName=NY")
   .then(resp => resp.json())
@@ -942,6 +950,7 @@ useEffect(() => {
   let currentVibes = (currentWeather ? temperatureConverter(currentWeather.feelsLike) : "")
   let currentIcon = (currentWeather ? currentWeather.icon : "")
   function populateTablesWithCity(cityWeatherInfo, cityName, cityId) {
+    console.log(cityWeatherInfo.current.temp)
     fetch("/api/cities", {
       method: "POST",
       headers: {
