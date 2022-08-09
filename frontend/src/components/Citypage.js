@@ -74,7 +74,9 @@ useEffect(() => {
   useEffect(() => {
     fetch(`/api/cities/${cityName}`)
     .then(resp => resp.json())
-    .then(data => setCurrentWeatherInfo(data))
+    .then(data => {
+      console.log(data)
+      setCurrentWeatherInfo([data])})
   }, [cityName])
 
   useEffect(() => {
@@ -82,13 +84,15 @@ useEffect(() => {
     setPage(JSON.parse(data))
   }, [])
 
-  let currentInfo = (
+  let currentInfo = currentWeatherInfo.map(weather => 
+    console.log(weather, "map")
+    (
     <Currentweather
     key={currentWeatherInfo.id}
     weather={currentWeatherInfo}
     cName={cName}
     />
-  )
+  ))
 
   let hourlyInfo = hourlyWeatherInfo.map(hour => (
     <Hourlycard
