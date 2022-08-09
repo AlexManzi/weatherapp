@@ -3,6 +3,7 @@ import './Citypage.css';
 import { useLocation } from 'react-router-dom'
 import Dailycard from './Dailycard';
 import Hourlycard from './Hourlycard';
+import Currentweather from './Currentweather';
 
 function Citypage() {
   const location = useLocation()
@@ -81,19 +82,13 @@ useEffect(() => {
     setPage(JSON.parse(data))
   }, [])
 
-
-function getHourFromUnixTimestamp(timestamp) {
-  let hours = new Date(timestamp * 1000).getHours()
-  if( hours > 12 && hours < 24) {
-    hours = hours - 12
-    return `${hours} pm`
-  } else if (hours === 12) {
-    return "12 pm"
-  } else if (hours === 24) {
-    return "12 am"
-  }
-  return `${hours} am`
-}
+  let currentInfo = currentWeatherInfo.map(weather => (
+    <Currentweather
+    key={weather.id}
+    weather={weather}
+    cName={cName}
+    />
+  ))
 
   let hourlyInfo = hourlyWeatherInfo.map(hour => (
     <Hourlycard
@@ -110,20 +105,9 @@ function getHourFromUnixTimestamp(timestamp) {
   ))
 
 
-  function temperatureConverter(valNum) {
-    valNum = parseFloat(valNum);
-    let newVal = ((valNum-273.15)*1.8)+32
-    return newVal.toFixed(0)
-  }
+  
 
-  let cityTemp = (currentWeatherInfo ? temperatureConverter(currentWeatherInfo.currentTemp) : "")
-  let cityTime = (currentWeatherInfo ? getHourFromUnixTimestamp(currentWeatherInfo.time) : "")
-  let cityVibes = (currentWeatherInfo ? temperatureConverter(currentWeatherInfo.feelsLike) : "")
-  let cityHumidity = (currentWeatherInfo ? currentWeatherInfo.humidity : "")
-  let cityUvi = (currentWeatherInfo ? currentWeatherInfo.uvi : "")
-  let cityIcon = (currentWeatherInfo ? currentWeatherInfo.icon : "")
-  let citySunrise = (currentWeatherInfo ? getHourFromUnixTimestamp(currentWeatherInfo.sunrise) : "")
-  let citySunset = (currentWeatherInfo ? getHourFromUnixTimestamp(currentWeatherInfo.sunset) : "")
+  
 
   // console.log(dailyWeatherInfo)
   // console.log(hourlyWeatherInfo)
@@ -133,25 +117,7 @@ function getHourFromUnixTimestamp(timestamp) {
   return (
     <div id="citypage">
       <div id="leftwrapper">
-      <div id="currentCityInfo">
-      <div id="cityInfo">
-        <h1 id="cityName">{cName}</h1>
-        <h3>Sunrise today is at {citySunrise} EST</h3>
-        <h3>Sunset today is at {citySunset} EST</h3>
-      </div>
-      <div id="cityWeather">
-        <div id="weatherline">
-          <h2>{cityTemp}°</h2>
-          <img id="iconpic" src={`http://openweathermap.org/img/wn/${cityIcon}.png`}/>
-        </div>
-        <div id="swingRight">
-        <h3>The current time is {cityTime} EST</h3>
-        <h3>It feels like {cityVibes}°</h3>
-        <h3>{cityHumidity}% Humidity</h3>
-        <h3>{cityUvi} UV Index</h3>
-        </div>
-      </div>
-      </div>
+      {currentInfo}
       <div id="fiveday">
         {dailyInfo}
       </div>

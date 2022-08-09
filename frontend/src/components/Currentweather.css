@@ -1,0 +1,27 @@
+
+#cityName {
+    font-size: 3rem;
+}
+
+#currentCityInfo {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    text-align: start;
+    padding-left: 5vw;
+}
+
+#cityWeather {
+    margin-left: auto;
+    padding-right: 5vw;
+    text-align: start;
+    font-size: 1rem;
+}
+
+#weatherline {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    column-gap: 1vw;
+    font-size: 1.3rem;
+}
