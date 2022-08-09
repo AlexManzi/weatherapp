@@ -896,6 +896,10 @@ function Home() {
   let [currentWeather, setCurrentWeather] = useState([])
   let [nyHourly, setNyHourly] = useState([])
   let [displayName, setDisplayName] = useState('')
+  let cityName;
+  let currentTemp;
+  let currentVibes;
+  let currentIcon;
 
 useEffect(() => {
   fetch(`/api/cities/NY`)
@@ -937,6 +941,10 @@ useEffect(() => {
   .then(resp => resp.json())
   .then(data => { console.log(data) 
     setCurrentWeather(data)})
+  cityName = currentWeather.cityName
+  currentTemp = temperatureConverter(currentWeather.currentTemp)
+  currentVibes = temperatureConverter(currentWeather.feelsLike)
+  currentIcon = currentWeather.icon
 
   fetch("/api/showHoursByCityName?cityName=NY")
   .then(resp => resp.json())
@@ -945,10 +953,7 @@ useEffect(() => {
     setNyHourly(data)})
 }, [])
 
-  let cityName = (currentWeather ? currentWeather.cityName : "")
-  let currentTemp = (currentWeather ? temperatureConverter(currentWeather.currentTemp) : "")
-  let currentVibes = (currentWeather ? temperatureConverter(currentWeather.feelsLike) : "")
-  let currentIcon = (currentWeather ? currentWeather.icon : "")
+  
   function populateTablesWithCity(cityWeatherInfo, cityName, cityId) {
     console.log(cityWeatherInfo.current.temp)
     fetch("/api/cities", {
