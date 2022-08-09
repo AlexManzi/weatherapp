@@ -1,13 +1,13 @@
 import React from 'react'
 import './Titlecard.css';
 
-function Titlecard({hour}) {
+function Titlecard({weather}) {
 
-    let currentTemp = (hour ? hour.currentTemp : "")
-    let currentIcon = (hour ? hour.currentIcon : "")
-    let currentVibes = (hour ? hour.currentVibes : "")
+    let currentTemp = (weather ? weather.currentTemp : "")
+    let currentIcon = (weather ? weather.currentIcon : "")
+    let currentVibes = (weather ? weather.currentVibes : "")
 
-    console.log(hour)
+    console.log(weather)
 
   return (
     <div id="topdiv">
