@@ -13,9 +13,8 @@ function Citycard({cityName}) {
       .then(data => {console.log(data[0]);setDisplayedCard(data[0])}) 
   }, [])
 
-  useEffect(() => {
-    window.localStorage.setItem('cardInfo', JSON.stringify(displayedCard))
-  }, [displayedCard])
+  window.localStorage.setItem('cardInfo', JSON.stringify(displayedCard))
+
 
   useEffect(() => {
     const data = window.localStorage.getItem('cardInfo')
