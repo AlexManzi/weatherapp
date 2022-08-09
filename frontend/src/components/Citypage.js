@@ -8,12 +8,10 @@ import Currentweather from './Currentweather';
 function Citypage() {
   const location = useLocation()
   let cityName = location.state.cityname
-  console.log(location)
   let [currentWeatherInfo, setCurrentWeatherInfo] = useState([])
   let [hourlyWeatherInfo, setHourlyWeatherInfo] = useState([])
   let [dailyWeatherInfo, setDailyWeatherInfo] = useState([])
   let [cName, setCName] = useState('')
-  let [page, setPage] = useState('')
 
   function compare_hours( a, b )
   {
@@ -53,7 +51,7 @@ useEffect(() => {
   if (cityName === "RM") {
     setCName("Rome") 
   }
-}, [])
+}, [cityName])
 
   useEffect(() => {
     fetch(`/api/showHoursByCityName?cityName=${cityName}`)
@@ -72,20 +70,14 @@ useEffect(() => {
   }, [cityName])
 
   useEffect(() => {
-    fetch(`/api/cities/${cityName}`)
+    fetch(`/api/showCityByCityName?cityName=${cityName}`)
     .then(resp => resp.json())
     .then(data => {
       console.log(data)
       setCurrentWeatherInfo([data])})
   }, [cityName])
 
-  useEffect(() => {
-    const data = window.localStorage.getItem('cardInfo')
-    setPage(JSON.parse(data))
-  }, [])
-
   let currentInfo = currentWeatherInfo.map(weather => 
-    console.log(weather, "map")
     (
     <Currentweather
     key={currentWeatherInfo.id}
@@ -108,16 +100,10 @@ useEffect(() => {
       />
   ))
 
-
-  
-
-  
-
   // console.log(dailyWeatherInfo)
   // console.log(hourlyWeatherInfo)
   // console.log(currentWeatherInfo)
 
-  
   return (
     <div id="citypage">
       <div id="leftwrapper">
