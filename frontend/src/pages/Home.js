@@ -908,7 +908,11 @@ function compare_hours( a, b )
   }
   return 0;
 }
-
+function temperatureConverter(valNum) {
+  valNum = parseFloat(valNum);
+  let newVal = ((valNum-273.15)*1.8)+32
+  return newVal.toFixed(0)
+}
 let apiKey = "75ed5b185b55fa3e505d70d93a44599e"
 
 let citiesWithLatLongs = {"NY": [40.71, -74.00], "SF": [37.77, -122.41], "SYD": [-33.8, 151.2], "TK": [35.67, 139.65], "RM": [41.9, 12.49]}
@@ -1019,11 +1023,8 @@ useEffect(() => {
       />
   ))
 
-  function temperatureConverter(valNum) {
-    valNum = parseFloat(valNum);
-    let newVal = ((valNum-273.15)*1.8)+32
-    return newVal.toFixed(0)
-  }
+
+  
 
 
   return (
