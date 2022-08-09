@@ -26,7 +26,7 @@ function Dailycard({day}) {
   }
 
   function temperatureConverter(valNum) {
-    valNum = parseFloat(valNum).toFixed(1);
+    valNum = parseFloat(valNum).toFixed(2);
     return ((valNum-273.15)*1.8)+32
   }
 
