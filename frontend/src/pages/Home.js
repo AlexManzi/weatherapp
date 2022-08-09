@@ -1009,7 +1009,7 @@ useEffect(() => {
   ))
 
   function temperatureConverter(valNum) {
-    valNum = parseInt(valNum);
+    valNum = parseFloat(valNum).toFixed(2);
     return ((valNum-273.15)*1.8)+32
   }
 

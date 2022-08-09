@@ -22,9 +22,14 @@ function Citycard({cityName}) {
     setDisplayedCard(JSON.parse(data))
   }, [])
 
+  function temperatureConverter(valNum) {
+    valNum = parseFloat(valNum).toFixed(2);
+    return ((valNum-273.15)*1.8)+32
+  }
+
   let cityTitle = (displayedCard ? displayedCard.cityName : "")
-  let currentTemp = (displayedCard  ? displayedCard.currentTemp : "")
-  let currentVibes = (displayedCard  ? displayedCard.feelsLike : "")
+  let currentTemp = (displayedCard  ? temperatureConverter(displayedCard.currentTemp) : "")
+  let currentVibes = (displayedCard  ? temperatureConverter(displayedCard.feelsLike) : "")
   let currentIcon = (displayedCard  ? displayedCard.icon : "")
 
   useEffect(() => {
@@ -45,7 +50,6 @@ function Citycard({cityName}) {
     }
   }, [])
 
-  console.log(cityName)
   return (
     <Link to={{pathname: "/citypage"}} state={{ cityname: cityName }}>
     <div id="wholecard">

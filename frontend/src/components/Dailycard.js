@@ -25,9 +25,14 @@ function Dailycard({day}) {
     } 
   }
 
+  function temperatureConverter(valNum) {
+    valNum = parseFloat(valNum).toFixed(1);
+    return ((valNum-273.15)*1.8)+32
+  }
+
   let cityDay = (day ? getDayFromUnixTimestamp(day.dailyTime) : "")
-  let cityTempH = (day ? day.tempH : "")
-  let cityTempL = (day ? day.tempL : "")
+  let cityTempH = (day ? temperatureConverter(day.tempH) : "")
+  let cityTempL = (day ? temperatureConverter(day.tempL) : "")
   let cityIcon = (day ? day.icon : "")
 
   console.log(day)

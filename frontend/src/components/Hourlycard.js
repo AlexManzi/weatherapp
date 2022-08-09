@@ -14,8 +14,13 @@ function getHourFromUnixTimestamp(timestamp) {
 }
 function Hourlycard({hour}) {
 
+  function temperatureConverter(valNum) {
+    valNum = parseFloat(valNum).toFixed(1);
+    return ((valNum-273.15)*1.8)+32
+  }
+
   let hourTime = (hour ? getHourFromUnixTimestamp(hour.hourlyTime) : "")
-  let hourTemp = (hour ? hour.temp : "")
+  let hourTemp = (hour ? temperatureConverter(hour.temp) : "")
   let hourIcon = (hour ? hour.icon : "")
 
   // console.log(hour)

@@ -118,11 +118,15 @@ function getHourFromUnixTimestamp(timestamp) {
       />
   ))
 
-  //adding this line for heroku test
 
-  let cityTemp = (currentWeatherInfo ? currentWeatherInfo.currentTemp : "")
+  function temperatureConverter(valNum) {
+    valNum = parseFloat(valNum).toFixed(2);
+    return ((valNum-273.15)*1.8)+32
+  }
+
+  let cityTemp = (currentWeatherInfo ? temperatureConverter(currentWeatherInfo.currentTemp) : "")
   let cityTime = (currentWeatherInfo ? getHourFromUnixTimestamp(currentWeatherInfo.time) : "")
-  let cityVibes = (currentWeatherInfo ? currentWeatherInfo.feelsLike : "")
+  let cityVibes = (currentWeatherInfo ? temperatureConverter(currentWeatherInfo.feelsLike) : "")
   let cityHumidity = (currentWeatherInfo ? currentWeatherInfo.humidity : "")
   let cityUvi = (currentWeatherInfo ? currentWeatherInfo.uvi : "")
   let cityIcon = (currentWeatherInfo ? currentWeatherInfo.icon : "")
@@ -132,6 +136,9 @@ function getHourFromUnixTimestamp(timestamp) {
   // console.log(dailyWeatherInfo)
   // console.log(hourlyWeatherInfo)
   // console.log(currentWeatherInfo)
+
+
+
   
   return (
     <div id="citypage">
