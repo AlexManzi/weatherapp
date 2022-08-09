@@ -914,7 +914,25 @@ function compare_hours( a, b )
   return 0;
 }
 
+let apiKey = "75ed5b185b55fa3e505d70d93a44599e"
+
+let citiesWithLatLongs = {"NY": [40.71, -74.00], "SF": [37.77, -122.41], "SYD": [-33.8, 151.2], "TK": [35.67, 139.65], "RM": [41.9, 12.49]}
+
 useEffect(() => {
+  let cities = Object.keys(citiesWithLatLongs)
+  for(let i = 0; i < cities.length; i++) {
+    let city = cities[i]
+    let lat = citiesWithLatLongs[city][0]
+    let long = citiesWithLatLongs[city][1]
+    fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`)
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data)
+      populateTablesWithCity(data, city, city.id)
+    })
+  }
+  
+
   fetch(`/api/showHoursByCityName?cityName=NY`)
   .then(resp => resp.json())
   .then(data => {
@@ -926,28 +944,28 @@ useEffect(() => {
   let currentTemp = (currentWeather ? temperatureConverter(currentWeather.currentTemp) : "")
   let currentVibes = (currentWeather ? temperatureConverter(currentWeather.feelsLike) : "")
   let currentIcon = (currentWeather ? currentWeather.icon : "")
-  function populateTablesWithCity(cityName, cityId) {
-
+  function populateTablesWithCity(cityWeatherInfo, cityName, cityId) {
+    console.log(cityWeatherInfo.current.temp)
     fetch("/api/cities", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        currentTemp: cityOne.current.temp,
-        time: cityOne.current.dt,
-        feelsLike: cityOne.current.feels_like,
-        uvi: cityOne.current.uvi,
-        sunrise: cityOne.current.sunrise,
-        sunset: cityOne.current.sunset,
-        icon: cityOne.current.weather[0].icon,
-        humidity: cityOne.current.humidity,
-        weatherdesc: cityOne.current.weather[0].description,
+        currentTemp: cityWeatherInfo.current.temp,
+        time: cityWeatherInfo.current.dt,
+        feelsLike: cityWeatherInfo.current.feels_like,
+        uvi: cityWeatherInfo.current.uvi,
+        sunrise: cityWeatherInfo.current.sunrise,
+        sunset: cityWeatherInfo.current.sunset,
+        icon: cityWeatherInfo.current.weather[0].icon,
+        humidity: cityWeatherInfo.current.humidity,
+        weatherdesc: cityWeatherInfo.current.weather[0].description,
         cityName: cityName
       })
     })
     for (let i=0; i < 24; i++) {
-      let hour = cityOne.hourly[i]
+      let hour = cityWeatherInfo.hourly[i]
       fetch("/api/hours", {
       method: "POST",
       headers: {
@@ -964,7 +982,7 @@ useEffect(() => {
     })
     }
     for (let i=0; i < 5; i++) {
-      let day = cityOne.daily[i]
+      let day = cityWeatherInfo.daily[i]
       fetch("/api/days", {
       method: "POST",
       headers: {
