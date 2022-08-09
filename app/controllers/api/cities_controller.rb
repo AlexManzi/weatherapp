@@ -6,7 +6,7 @@ class Api::CitiesController < ApplicationController
 
     def update
         city = City.find_by!(cityName: params[:cityName])
-        city.update!(params.permit(:currentTemp, :time, :feelsLike, :uvi, :sunrise, :sunset, :icon, :humidity, :cityName))
+        city.update!(params.permit(:currentTemp, :time, :feelsLike, :uvi, :sunrise, :sunset, :icon, :humidity, :cityName, :weatherdesc))
         render json: city
     rescue ActiveRecord::RecordInvalid => invalid 
         render json: {errors: invalid.record.errors}, status: 422
@@ -16,7 +16,7 @@ class Api::CitiesController < ApplicationController
         if City.exists?(cityName: params[:cityName])
             update
         else
-            city = City.create!(params.permit(:currentTemp, :time, :feelsLike, :uvi, :sunrise, :sunset, :icon, :humidity, :cityName))
+            city = City.create!(params.permit(:currentTemp, :time, :feelsLike, :uvi, :sunrise, :sunset, :icon, :humidity, :cityName, :weatherdesc))
             render json: city
         end
     end

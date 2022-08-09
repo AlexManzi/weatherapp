@@ -36,15 +36,15 @@
 
 #maincitytop {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 35% 35% 30%;
     column-gap: 1vh;
     text-align: end;
     font-size: .8rem;
 }
 
+
 #feelslike {
     margin-top: -2vh;
-    font-size: .9rem;
 }
 
 #weatherpic {

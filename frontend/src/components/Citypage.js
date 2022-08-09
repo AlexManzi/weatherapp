@@ -146,7 +146,7 @@ function getHourFromUnixTimestamp(timestamp) {
       <div id="leftwrapper">
       <div id="currentCityInfo">
       <div id="cityInfo">
-        <h1>{cName}</h1>
+        <h1 id="cityName">{cName}</h1>
         <h3>Sunrise today is at {citySunrise}</h3>
         <h3>Sunset today is at {citySunset}</h3>
       </div>

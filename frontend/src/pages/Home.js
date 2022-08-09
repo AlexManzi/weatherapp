@@ -942,6 +942,7 @@ useEffect(() => {
         sunset: cityOne.current.sunset,
         icon: cityOne.current.weather[0].icon,
         humidity: cityOne.current.humidity,
+        weatherdesc: cityOne.current.weather[0].description,
         cityName: cityName
       })
     })
@@ -974,6 +975,7 @@ useEffect(() => {
         tempH: day.temp.max,
         tempL: day.temp.min,
         icon: day.weather[0].icon,
+        weatherdesc: day.weather[0].description,
         dayNumber: i,
         cityName: cityName,
         city_id: cityId
@@ -1023,11 +1025,11 @@ useEffect(() => {
       </div>
       <div id="rightside">
         <div id="maincitytop">
-          <h2>{displayName}</h2>
+          <h1 id="placeName">{displayName}</h1>
           <h2>{currentTemp}°</h2>
           <img id="weatherpic" src={`http://openweathermap.org/img/wn/${currentIcon}.png`}/>
           <h2></h2>
-          <h3 id="feelslike">It feels like {currentVibes}°</h3>
+          <h2 id="feelslike">It feels like {currentVibes}°</h2>
         </div>
         <div id="maincityinfo">
           <h2>NY Hourly Forecast</h2>

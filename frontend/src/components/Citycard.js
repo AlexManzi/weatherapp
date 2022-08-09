@@ -32,6 +32,7 @@ function Citycard({cityName}) {
   let currentTemp = (displayedCard  ? temperatureConverter(displayedCard.currentTemp) : "")
   let currentVibes = (displayedCard  ? temperatureConverter(displayedCard.feelsLike) : "")
   let currentIcon = (displayedCard  ? displayedCard.icon : "")
+  let currentDesc = (displayedCard  ? displayedCard.weatherdesc : "")
 
   useEffect(() => {
     if (cityName === "NY") {
@@ -59,6 +60,7 @@ function Citycard({cityName}) {
         <div id="currentWeather">
           <h2>{currentTemp}°</h2>
           <img src={`http://openweathermap.org/img/wn/${currentIcon}.png`} id="weatherIcon"/>
+          <h3>{currentDesc}</h3>
         </div>
     </div>
     </Link>
