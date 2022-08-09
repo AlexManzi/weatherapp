@@ -41,10 +41,10 @@ function Dailycard({day}) {
 
   return (
     <div id="dailycard">
-      <h1>{cityDay}</h1>
+      <h1 id="dailyHeading">{cityDay}</h1>
       <div id="tworow">
-        <h2>{cityTempH}°</h2>
-        <h2>{cityTempL}°</h2>
+        <h2>The High is {cityTempH}°</h2>
+        <h2>The Low is {cityTempL}°</h2>
       </div>
       <img id="weathericon" src={`http://openweathermap.org/img/wn/${cityIcon}.png`}/>
     </div>

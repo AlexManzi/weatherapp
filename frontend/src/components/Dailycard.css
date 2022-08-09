@@ -7,10 +7,14 @@
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-evenly;
-    column-gap: 2vw;
+    column-gap: 1vh;
 }
 
 #weathericon {
     height: 70px;
     width: auto;
+}
+
+#dailyHeading {
+    color: black
 }

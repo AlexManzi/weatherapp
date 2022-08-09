@@ -30,7 +30,7 @@
 }
 
 #fiveday {
-    background-color: grey;
+    background-color: #F6F8FA;
     height: 300px;
     width: 70vw;
     margin-left: 2vw;
@@ -40,10 +40,11 @@
     margin-top: 92px;
     border-radius: 5px;
     overflow-x: auto;
+    opacity: .92;
 }
 
 #rightwrapper {
-    background-color: aquamarine;
+    background-color: #f7c59f;
     height: 600px;
     width: 280px;
     margin-top: 30px;
@@ -51,6 +52,7 @@
     padding: 2vh;
     border-radius: 5px;
     margin-left: 3vw;
+    opacity: .92;
 }
 
 #swingRight {

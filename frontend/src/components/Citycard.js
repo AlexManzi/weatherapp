@@ -52,10 +52,10 @@ function Citycard({cityName}) {
   }, [])
 
   return (
-    <Link to={{pathname: "/citypage"}} state={{ cityname: cityName }}>
+    <Link to={{pathname: "/citypage"}} state={{ cityname: cityName }} style={{ textDecoration: 'none'}} id="cardText">
     <div id="wholecard">
         <h1 id="hidden">{cityName}</h1>
-        <h1>{cName}</h1>
+        <h1 id="cardTitle">{cName}</h1>
         <div id="currentWeather">
           <h2>{currentTemp}°</h2>
           <img src={`http://openweathermap.org/img/wn/${currentIcon}.png`}/>

@@ -15,8 +15,9 @@ function getHourFromUnixTimestamp(timestamp) {
 function Hourlycard({hour}) {
 
   function temperatureConverter(valNum) {
-    valNum = parseFloat(valNum).toFixed(2);
-    return ((valNum-273.15)*1.8)+32
+    valNum = parseFloat(valNum);
+    let newVal = ((valNum-273.15)*1.8)+32
+    return newVal.toFixed(2)
   }
 
   let hourTime = (hour ? getHourFromUnixTimestamp(hour.hourlyTime) : "")
