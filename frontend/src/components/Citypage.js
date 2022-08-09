@@ -147,7 +147,7 @@ function getHourFromUnixTimestamp(timestamp) {
   // console.log(hourlyWeatherInfo)
   // console.log(currentWeatherInfo)
 
-
+console.log(cityName)
 
   
   return (
