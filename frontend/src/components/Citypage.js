@@ -103,11 +103,13 @@ useEffect(() => {
 
 function getHourFromUnixTimestamp(timestamp) {
   let hours = new Date(timestamp * 1000).getHours()
-  if( hours > 12) {
+  if( hours > 12 && hours < 24) {
     hours = hours - 12
     return `${hours} pm`
   } else if (hours === 12) {
     return "12 pm"
+  } else if (hours === 24) {
+    return "12 am"
   }
   return `${hours} am`
   
