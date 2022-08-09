@@ -42,6 +42,13 @@
     font-size: .8rem;
 }
 
+#locationTitle {
+    padding: 0.5rem 1rem;
+    color: #112334;
+    border-bottom: 2px solid #112334;
+    width: 50%;
+}
+
 
 #feelslike {
     margin-top: -2vh;
@@ -92,7 +99,7 @@
     #hpagemain {
         display: grid;
         grid-template-columns: auto;
-        height: 225vh;
+        height: 270vh;
         background-color: #f7c59f
     }
 
@@ -143,13 +150,20 @@
         grid-template-columns: auto;
         justify-content: space-evenly;
     }   
+
+    #locationTitle {
+        padding: 0.5rem 1rem;
+        color: #112334;
+        border-bottom: 2px solid #112334;
+        width: 70%;
+    }
 }
 
 @media only screen and (max-width: 385px) {
     #hpagemain {
         display: grid;
         grid-template-columns: auto;
-        height: 265vh;
+        height: 305vh;
         background-color: #f7c59f
     }
     #destinationdisplay {

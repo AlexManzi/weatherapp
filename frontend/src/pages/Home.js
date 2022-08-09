@@ -1047,7 +1047,7 @@ useEffect(() => {
     </div>
     <div id="destinationdisplay">
       <div id="destinationtitle">
-        <h1>Featured Locations</h1>
+        <h1 id="locationTitle">Featured Locations</h1>
       </div>
       <div id="displaycardarea">
         {shownArray}
