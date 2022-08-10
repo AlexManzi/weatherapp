@@ -45,8 +45,6 @@
     padding: 8px;
     margin-top: 133px;
     border-radius: 5px;
-    overflow-x: auto;
-    overflow: scroll
 }
 
 #rightwrapper {
@@ -58,7 +56,6 @@
     padding: 2vh;
     border-radius: 5px;
     margin-left: 3vw;
-    overflow: scroll
 }
 
 #swingRight {

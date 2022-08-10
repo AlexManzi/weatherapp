@@ -41,8 +41,8 @@ function Dailycard({day}) {
     <div id="dailycard">
       <h1 id="dailyHeading">{cityDay}</h1>
       <div id="tworow">
-        <h2>The High will be {cityTempH}°</h2>
-        <h2>The Low will be {cityTempL}°</h2>
+        <h2>High {cityTempH}°</h2>
+        <h2>Low {cityTempL}°</h2>
       </div>
       <img id="weathericon" src={`http://openweathermap.org/img/wn/${cityIcon}.png`}/>
     </div>
